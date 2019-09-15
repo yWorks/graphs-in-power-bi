@@ -1,0 +1,79 @@
+{
+  "dataRoles": [
+    {
+      "displayNameKey": "Visual_Source",
+      "name": "Source",
+      "kind": "Grouping",
+      "displayName": "Source"
+    },
+    {
+      "displayNameKey": "Visual_Target",
+      "name": "Target",
+      "kind": "Grouping",
+      "displayName": "Target"
+    }
+  ],
+  "objects": {
+    "text": {
+      "displayName": "Text",
+      "description": "Trying things out",
+      "properties": {
+        "textColor": {
+          "displayName": "Color",
+          "description": "The fill color of the text.",
+          "type": {
+            "fill": {
+              "solid": {
+                "color": true
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "dataViewMappings": [
+    {
+      "conditions": [
+        {
+          "Source": {
+            "max": 1
+          },
+          "Target": {
+            "max": 1
+          }
+        }
+      ],
+      "categorical": {
+        "categories": {
+          "select": [
+            {
+              "for": {
+                "in": "Source"
+              }
+            },
+            {
+              "for": {
+                "in": "Target"
+              }
+            }
+          ],
+          "dataReductionAlgorithm": {
+            "top": {
+              "count": 2000
+            }
+          }
+        },
+        "values": {
+          "select": [
+            {
+              "for": {
+                "in": "Source"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

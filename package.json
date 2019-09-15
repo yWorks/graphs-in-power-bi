@@ -1,0 +1,27 @@
+{
+  "description": "Power BI yFiles integration",
+  "license": "MIT",
+  "private": true,
+  "name": "graphs-in-power-bi",
+  "scripts": {
+    "pbiviz": "pbiviz",
+    "start": "pbiviz start",
+    "package": "pbiviz package",
+    "lint": "tslint -r \"node_modules/tslint-microsoft-contrib\"  \"+(src|test)/**/*.ts\""
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.5.5",
+    "@babel/runtime-corejs2": "^7.5.5",
+    "@types/d3": "5.7.2",
+    "core-js": "3.2.1",
+    "d3": "5.10.0",
+    "lodash": "^4.17.15",
+    "powerbi-visuals-api": "~2.6.1",
+    "powerbi-visuals-utils-dataviewutils": "^2.2.1",
+    "yfiles": "./yFiles/lib/es-modules"
+  },
+  "devDependencies": {
+    "ts-loader": "6.0.4",
+    "typescript": "3.5.3"
+  }
+}
