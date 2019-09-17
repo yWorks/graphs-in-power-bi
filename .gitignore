@@ -143,3 +143,11 @@ fabric.properties
 
 /dist
 /.tmp
+
+# yFiles
+yFiles/**/*.js
+yFiles/**/*.css
+yFiles/**/*.json
+yFiles/**/*.ts
+
+webpack.statistics.dev.html

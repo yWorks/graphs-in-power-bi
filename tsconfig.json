@@ -1,21 +1,16 @@
 {
-    "compilerOptions": {
-        "allowJs": false,
-        "emitDecoratorMetadata": false,
-        "experimentalDecorators": false,
-        "target": "es6",
-        "sourceMap": false,
-        "outDir": "./.tmp/build/",
-        "moduleResolution": "node",
-        "declaration": false,
-        "resolveJsonModule": true,
-        "allowSyntheticDefaultImports": true,
-        "lib": [
-            "es2015",
-            "dom"
-        ]
-    },
-    "files": [
-        "./src/visual.ts"
-    ]
+  "compilerOptions": {
+    "allowJs": false,
+    "emitDecoratorMetadata": false,
+    "experimentalDecorators": false,
+    "target": "es6",
+    "sourceMap": false,
+    "outDir": "./.tmp/build/",
+    "moduleResolution": "node",
+    "declaration": false,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "lib": ["es2015", "dom"]
+  },
+  "files": ["./src/visual.ts"]
 }

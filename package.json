@@ -7,7 +7,8 @@
     "pbiviz": "pbiviz",
     "start": "pbiviz start",
     "package": "pbiviz package",
-    "lint": "tslint -r \"node_modules/tslint-microsoft-contrib\"  \"+(src|test)/**/*.ts\""
+    "lint": "tslint -r \"node_modules/tslint-microsoft-contrib\"  \"+(src|test)/**/*.ts\"",
+    "prettier": "prettier --write *.json {style,src}/**/*.{less,ts,json}"
   },
   "dependencies": {
     "@babel/runtime": "^7.5.5",
@@ -22,6 +23,9 @@
   },
   "devDependencies": {
     "ts-loader": "6.0.4",
-    "typescript": "3.5.3"
+    "tslint": "5.20.0",
+    "tslint-microsoft-contrib": "6.2.0",
+    "typescript": "3.5.3",
+    "prettier": "1.18.2"
   }
 }
