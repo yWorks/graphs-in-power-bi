@@ -1,26 +1,135 @@
 {
+  "supportsHighlight": true,
+  "suppressDefaultTitle": true,
   "dataRoles": [
     {
-      "displayNameKey": "Visual_Source",
-      "name": "Source",
+      "displayNameKey": "Visual_NodeId",
+      "description": "The id's corresponding to the source of an edge.",
+      "name": "NodeId",
       "kind": "Grouping",
-      "displayName": "Source"
+      "displayName": "Node Id"
     },
     {
-      "displayNameKey": "Visual_Target",
-      "name": "Target",
+      "displayNameKey": "Visual_TargetId",
+      "description": "The id's corresponding to the target of an edge.",
+      "name": "TargetId",
       "kind": "Grouping",
-      "displayName": "Target"
+      "displayName": "Target Id"
+    },
+    {
+      "displayNameKey": "Visual_NodeMainLabel",
+      "description": "The main labels of the nodes.",
+      "name": "NodeMainLabel",
+      "kind": "Measure",
+      "displayName": "Main Label"
+    },
+    {
+      "displayNameKey": "Visual_NodeSecondLabel",
+      "description": "The labels shown underneath the main label of the nodes.",
+      "name": "NodeSecondLabel",
+      "kind": "Grouping",
+      "displayName": "Secondary Label"
+    },
+    {
+      "displayNameKey": "Visual_NodeTopLabel",
+      "description": "The labels shown above the main label of the nodes.",
+      "name": "NodeTopLabel",
+      "kind": "Grouping",
+      "displayName": "Top Label"
+    },
+    {
+      "displayNameKey": "Visual_NodeShape",
+      "description": "The business names defining the shape of the nodes. Allowed names are: true branch, corporation, partnership, disregarded, rctb, ctb.",
+      "name": "NodeShape",
+      "kind": "Grouping",
+      "displayName": "Shape"
+    },
+    {
+      "displayNameKey": "Visual_Edge_Label",
+      "description": "The labels shown next to the edges.",
+      "name": "EdgeLabel",
+      "kind": "Grouping",
+      "displayName": "Edge Label"
     }
   ],
   "objects": {
-    "text": {
-      "displayName": "Text",
-      "description": "Trying things out",
+    "network": {
+      "displayName": "Network",
+      "displayNameKey": "Visual_Network",
       "properties": {
-        "textColor": {
-          "displayName": "Color",
-          "description": "The fill color of the text.",
+        "layoutStyle": {
+          "displayName": "Layout",
+          "description": "The type of layout used to lay out the network. Note that the tree can only be applied to a tree structure. If the graph is not a tree the layout falls back to the hierarchical layout type.",
+          "displayNameKey": "Visual_Network_Layout",
+          "type": {
+            "enumeration": [
+              {
+                "value": "Organic",
+                "displayNameKey": "Visual_Network_Organic",
+                "displayName": "Organic"
+              },
+              {
+                "value": "Hierarchic",
+                "displayNameKey": "Visual_Network_Hierarchic",
+                "displayName": "Hierarchic"
+              },
+              {
+                "value": "Tree",
+                "displayNameKey": "Visual_Network_Tree",
+                "displayName": "Tree"
+              }
+            ]
+          }
+        },
+        "invertEdges": {
+          "description": "Whether the edges are inverted, i.e. the parent-child relationship is inverted.",
+          "displayName": "Invert Edges",
+          "displayNameKey": "Visual_Edges_Invert",
+          "type": {
+            "bool": true
+          }
+        },
+        "layoutDirection": {
+          "displayName": "Layout Direction",
+          "description": "The direction in which the children are positioned with respect to the their parent.",
+          "displayNameKey": "Visual_Network_Direction",
+          "type": {
+            "enumeration": [
+              {
+                "value": "TopToBottom",
+                "displayNameKey": "Visual_Network_Layout_TB",
+                "displayName": "Top to bottom"
+              },
+              {
+                "value": "BottomToTop",
+                "displayNameKey": "Visual_Network_Layout_BT",
+                "displayName": "Bottom to top"
+              },
+              {
+                "value": "LeftToRight",
+                "displayNameKey": "Visual_Network_Layout_LR",
+                "displayName": "Left to right"
+              },
+              {
+                "value": "RightToLeft",
+                "displayNameKey": "Visual_Network_Layout_RL",
+                "displayName": "Right to left"
+              }
+            ]
+          }
+        },
+        "zoomSelectFactor": {
+          "displayName": "Selection Zoom Factor",
+          "description": "The zoom factor applied when another widget defines a focus. Typically a value between 1 and 2.",
+          "displayNameKey": "Visual_Network_Zoom_Factor",
+          "type": {
+            "numeric": true
+          }
+        },
+        "highlightColor": {
+          "displayName": "Selection Zoom Color",
+          "description": "The color of the node when zooming into a selected item via an adjacent widget.",
+          "displayNameKey": "Visual_Network_Zoom_Color",
           "type": {
             "fill": {
               "solid": {
@@ -30,16 +139,305 @@
           }
         }
       }
+    },
+    "neighborhood": {
+      "displayName": "Neighborhood",
+      "description": "Augments the filtered view with parents and children.",
+      "displayNameKey": "Visual_Neighborhood",
+      "properties": {
+        "show": {
+          "description": "Whether the neighborhood of filtered nodes is shown.",
+          "displayName": "Show",
+          "displayNameKey": "Visual_ShowNeighbors",
+          "type": {
+            "bool": true
+          }
+        },
+        "maxParentLevel": {
+          "description": "How many parents should be shown for the filtered items.",
+          "displayName": "Parents",
+          "displayNameKey": "Visual_Parents",
+          "type": {
+            "numeric": true
+          }
+        },
+        "maxChildrenLevel": {
+          "description": "How many children should be shown for the filtered items.",
+          "displayName": "Children",
+          "displayNameKey": "Visual_Parents",
+          "type": {
+            "numeric": true
+          }
+        }
+      }
+    },
+    "edges": {
+      "displayName": "Edges",
+      "displayNameKey": "Visual_Edges",
+      "properties": {
+        "show": {
+          "description": "Whether the edges are rendered or not.",
+          "displayName": "Show",
+          "displayNameKey": "Visual_ShowEdges",
+          "type": {
+            "bool": true
+          }
+        },
+        "bundleHierarchicEdges": {
+          "description": "Whether the edges are merged. This setting only applies to the hierarchic layout.",
+          "displayName": "Bundle Hierarchic Edges",
+          "displayNameKey": "Visual_Bundle_Hierarchic_Edges",
+          "type": {
+            "bool": true
+          }
+        },
+        "showLabel": {
+          "description": "Whether the labels of the edges are shown.",
+          "displayName": "Show Label",
+          "displayNameKey": "Visual_Show_Edge_Label",
+          "type": {
+            "bool": true
+          }
+        },
+        "labelSuffix": {
+          "displayName": "Label Suffix",
+          "description": "The string appended to the edge labels.",
+          "displayNameKey": "Visual_Edge_Label_Suffix",
+          "type": {
+            "text": true
+          }
+        },
+        "labelSize": {
+          "displayName": "Label Size",
+          "description": "The font size of the edge labels.",
+          "displayNameKey": "Visual_Edge_Label_Size",
+          "type": {
+            "numeric": true
+          }
+        },
+        "labelColor": {
+          "displayName": "Label Color",
+          "description": "The color of the edge labels.",
+          "displayNameKey": "Visual_Edge_Label_Color",
+          "type": {
+            "fill": {
+              "solid": {
+                "color": true
+              }
+            }
+          }
+        },
+        "width": {
+          "description": "The thickness of the edges.",
+          "displayName": "Edge Width",
+          "displayNameKey": "Visual_Edge_Width",
+          "type": {
+            "numeric": true
+          }
+        },
+        "color": {
+          "displayName": "Edge Color",
+          "description": "The color of the edges.",
+          "displayNameKey": "Visual_Edge_Color",
+          "type": {
+            "fill": {
+              "solid": {
+                "color": true
+              }
+            }
+          }
+        },
+        "sourceArrow": {
+          "displayName": "Source Arrow",
+          "description": "The arrow at the source of the edges.",
+          "displayNameKey": "Visual_Edge_Source_Arrow",
+          "type": {
+            "enumeration": [
+              {
+                "value": "None",
+                "displayNameKey": "Visual_Edge_Source_Arrow_None",
+                "displayName": "None"
+              },
+              {
+                "value": "Simple",
+                "displayNameKey": "Visual_Edge_Source_Arrow_Simple",
+                "displayName": "Simple Arrow"
+              },
+              {
+                "value": "Default",
+                "displayNameKey": "Visual_Edge_Source_Arrow_Default",
+                "displayName": "Standard Arrow"
+              },
+              {
+                "value": "Circle",
+                "displayNameKey": "Visual_Edge_Source_Arrow_Circle",
+                "displayName": "Circle"
+              },
+              {
+                "value": "Diamond",
+                "displayNameKey": "Visual_Edge_Source_Arrow_Diamond",
+                "displayName": "Diamond"
+              }
+            ]
+          }
+        },
+        "targetArrow": {
+          "displayName": "Target Arrow",
+          "description": "The arrow at the target of the edges.",
+          "displayNameKey": "Visual_Edge_Target_Arrow",
+          "type": {
+            "enumeration": [
+              {
+                "value": "None",
+                "displayNameKey": "Visual_Edge_Target_Arrow_None",
+                "displayName": "None"
+              },
+              {
+                "value": "Simple",
+                "displayNameKey": "Visual_Edge_Target_Arrow_Simple",
+                "displayName": "Simple Arrow"
+              },
+              {
+                "value": "Default",
+                "displayNameKey": "Visual_Edge_Target_Arrow_Default",
+                "displayName": "Standard Arrow"
+              },
+              {
+                "value": "Circle",
+                "displayNameKey": "Visual_Edge_Target_Arrow_Circle",
+                "displayName": "Circle"
+              },
+              {
+                "value": "Diamond",
+                "displayNameKey": "Visual_Edge_Target_Arrow_Diamond",
+                "displayName": "Diamond"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "nodes": {
+      "displayName": "Nodes",
+      "displayNameKey": "Visual_Nodes",
+      "properties": {
+        "color": {
+          "description": "The main (background) color of the nodes.",
+          "displayName": "Node Color",
+          "displayNameKey": "Visual_Node_Color",
+          "type": {
+            "fill": {
+              "solid": {
+                "color": true
+              }
+            }
+          }
+        },
+        "borderColor": {
+          "description": "The border color of the nodes.",
+          "displayName": "Border Color",
+          "displayNameKey": "Visual_Node_Border_Color",
+          "type": {
+            "fill": {
+              "solid": {
+                "color": true
+              }
+            }
+          }
+        },
+        "borderWidth": {
+          "displayName": "Border Width",
+          "description": "The thickness of the node border.",
+          "displayNameKey": "Visual_Node_Border_Width",
+          "type": {
+            "numeric": true
+          }
+        },
+        "mainLabelColor": {
+          "displayName": "Main Label Color",
+          "description": "The color of the main label.",
+          "displayNameKey": "Visual_Node_Main_Label_Color",
+          "type": {
+            "fill": {
+              "solid": {
+                "color": true
+              }
+            }
+          }
+        },
+        "subLabelColor": {
+          "displayName": "Secondary Label Color",
+          "description": "The color of the label underneath the main label.",
+          "displayNameKey": "Visual_Node_Sub_Label_Color",
+          "type": {
+            "fill": {
+              "solid": {
+                "color": true
+              }
+            }
+          }
+        },
+        "topLabelColor": {
+          "displayName": "Top Label Color",
+          "description": "The color of the label above the main label.",
+          "displayNameKey": "Visual_Node_Top_Label_Color",
+          "type": {
+            "fill": {
+              "solid": {
+                "color": true
+              }
+            }
+          }
+        },
+        "nodeReSize": {
+          "displayName": "Resize to Labels",
+          "description": "Whether the nodes are resized in function of the labels.",
+          "displayNameKey": "Visual_Node_Adapt",
+          "type": {
+            "bool": true
+          }
+        },
+        "showTopLabel": {
+          "displayName": "Show Top Label",
+          "description": "Whether the label above the main label is shown.",
+          "displayNameKey": "Visual_Node_Show_Top_Label",
+          "type": {
+            "bool": true
+          }
+        },
+        "showBottomLabel": {
+          "displayName": "Show Sub Label",
+          "description": "Whether the label below the main label is shown.",
+          "displayNameKey": "Visual_Node_Show_Sub_Label",
+          "type": {
+            "bool": true
+          }
+        },
+        "topLabelIsRestPercentage": {
+          "displayName": "Top Label is Rest Percentage",
+          "description": "If switched on the top-label will show the rest-percentage of the combined outgoing edge percentages.",
+          "displayNameKey": "Visual_Node_Show_Sub_Label",
+          "type": {
+            "bool": true
+          }
+        }
+      }
     }
   },
   "dataViewMappings": [
     {
       "conditions": [
         {
-          "Source": {
+          "NodeId": {
             "max": 1
           },
-          "Target": {
+          "TargetId": {
+            "max": 1
+          },
+          "NodeLabel": {
+            "max": 1
+          },
+          "NodeShape": {
             "max": 1
           }
         }
@@ -49,29 +447,45 @@
           "select": [
             {
               "for": {
-                "in": "Source"
+                "in": "NodeId"
               }
             },
             {
               "for": {
-                "in": "Target"
+                "in": "TargetId"
+              }
+            },
+            {
+              "for": {
+                "in": "NodeMainLabel"
+              }
+            },
+            {
+              "for": {
+                "in": "NodeSecondLabel"
+              }
+            },
+            {
+              "for": {
+                "in": "NodeShape"
+              }
+            },
+            {
+              "for": {
+                "in": "EdgeLabel"
+              }
+            },
+            {
+              "for": {
+                "in": "NodeTopLabel"
               }
             }
           ],
           "dataReductionAlgorithm": {
             "top": {
-              "count": 2000
+              "count": 1000
             }
           }
-        },
-        "values": {
-          "select": [
-            {
-              "for": {
-                "in": "Source"
-              }
-            }
-          ]
         }
       }
     }

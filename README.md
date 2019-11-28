@@ -12,16 +12,13 @@ The most import elements in this tutorial are:
 
 - installing the Power BI tools for NodeJs via `npm i -g powerbi-visuals-tools`
 - registration of a Power BI certificate for localhost via `pbiviz --install-cert`
+- start the custom Power BI development server with 
 
-Outside this, the setup is standard and amounts to the usual
+    pbiviz start
 
-    npm i
-    
-or `yarn i` together with
+In case the certificate is still giving problems with something like *"net::ERR_CERT_COMMON_NAME_INVALID"*, it's because Chrome browser blocks this address https://localhost:8080 because of non-valid certificate.
+Please open the following link in separate browser tab: https://localhost:8080/assets/status. Chrome will show the warning message, click  advanced > proceed to unsafe version. After that Chrome will work with dev visual correctly.        
 
-    npm start
-
-like any other NodeJS app.
 
 In order to display a graph you need a dataset with a column "Source" and a column "Target". Simply drag the columns into the data-binding holders in the properties of the diagram widget.           
  

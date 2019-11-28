@@ -2,24 +2,22 @@
   "visual": {
     "name": "yDiagram",
     "displayName": "yDiagram",
-    "guid": "yDiagramF05B91C213A94E47994826C0256E8560",
+    "guid": "PowerDiagram",
     "visualClassName": "Visual",
-    "version": "1.0.0",
-    "description": "",
-    "supportUrl": "",
-    "gitHubUrl": ""
+    "version": "1.1.0",
+    "description": "yFiles diagrams for Power BI",
+    "supportUrl": "https://yworks.com",
+    "gitHubUrl": "https://github.com/yWorks/graphs-in-power-bi"
   },
   "apiVersion": "2.6.0",
   "author": {
-    "name": "",
-    "email": ""
+    "name": "yWorks",
+    "email": "support@yworks.com"
   },
   "assets": {
     "icon": "assets/icon.png"
   },
-  "externalJS": [
-
-  ],
+  "externalJS": [],
   "style": "style/visual.less",
   "capabilities": "capabilities.json",
   "dependencies": null,

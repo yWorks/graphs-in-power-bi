@@ -1,0 +1,711 @@
+FromId,ToId,CompanyName,Country,ShapeType,Percentage,Value1,Value2,Value3
+0,14,"Williams, Gomez and Combs",Central African Republic,ellipse,50,214,19.27317255106857,99.94339654247365
+0,20,"Williams, Gomez and Combs",Central African Republic,ellipse,90,55,21.618453430437874,110.1060676908796
+0,25,"Williams, Gomez and Combs",Central African Republic,ellipse,50,267,6.780170004493732,93.0504105886116
+0,45,"Williams, Gomez and Combs",Central African Republic,ellipse,50,267,15.298686583644905,93.42135280645508
+0,47,"Williams, Gomez and Combs",Central African Republic,ellipse,20,161,-6.359321703188087,109.30924455329468
+0,54,"Williams, Gomez and Combs",Central African Republic,ellipse,40,108,25.57620521805111,102.70476822789198
+0,59,"Williams, Gomez and Combs",Central African Republic,ellipse,44.5,288,20.453642289530222,104.45955899281508
+0,61,"Williams, Gomez and Combs",Central African Republic,ellipse,44.5,42,19.836367936087452,109.49631918746374
+0,67,"Williams, Gomez and Combs",Central African Republic,ellipse,74.1,277,8.404539949000974,105.35222550411916
+0,82,"Williams, Gomez and Combs",Central African Republic,ellipse,30,32,8.065266883479115,122.45519958647165
+0,93,"Williams, Gomez and Combs",Central African Republic,ellipse,100,149,7.22397881102247,100.50680180912909
+0,94,"Williams, Gomez and Combs",Central African Republic,ellipse,30,274,22.208218859085694,80.73699153096302
+1,4,"Scott, Obrien and Bradley",Bulgaria,ellipse,80,291,21.436609722830426,88.51015137693051
+1,8,"Scott, Obrien and Bradley",Bulgaria,ellipse,80,130,20.66830909841274,116.62446466051473
+1,21,"Scott, Obrien and Bradley",Bulgaria,ellipse,60,221,19.235486400821713,113.93367918340789
+1,41,"Scott, Obrien and Bradley",Bulgaria,ellipse,80,282,16.685285460359736,105.64462532360362
+1,42,"Scott, Obrien and Bradley",Bulgaria,ellipse,100,17,16.533537268111047,99.36688063569935
+1,49,"Scott, Obrien and Bradley",Bulgaria,ellipse,74.1,260,20.630386711399535,104.53108731171507
+1,68,"Scott, Obrien and Bradley",Bulgaria,ellipse,60,237,23.083493111147256,110.79708857745177
+1,74,"Scott, Obrien and Bradley",Bulgaria,ellipse,40,101,8.452769291082987,97.87226937437225
+1,78,"Scott, Obrien and Bradley",Bulgaria,ellipse,100,115,12.270252537642937,108.02506255341925
+1,87,"Scott, Obrien and Bradley",Bulgaria,ellipse,30,253,9.590768419464833,111.99037246840605
+2,16,Craig-Stevenson,South Africa,round-rectangle,74.1,189,10.956642999439124,78.94100937868534
+2,19,Craig-Stevenson,South Africa,round-rectangle,90,292,22.185158032580556,95.73848578266565
+2,25,Craig-Stevenson,South Africa,round-rectangle,74.1,11,19.476180947448107,117.50935656684271
+2,51,Craig-Stevenson,South Africa,round-rectangle,60,200,22.336149977249477,92.9905095888361
+2,55,Craig-Stevenson,South Africa,round-rectangle,40,277,8.146567674937586,99.10853283678463
+2,64,Craig-Stevenson,South Africa,round-rectangle,50,185,10.441007721855854,100.56115951717187
+2,66,Craig-Stevenson,South Africa,round-rectangle,30,286,9.611344255622118,79.4720023310606
+2,78,Craig-Stevenson,South Africa,round-rectangle,30,65,6.528500885020783,92.94132146695453
+2,93,Craig-Stevenson,South Africa,round-rectangle,100,154,19.71681501332209,117.76544346365995
+3,14,Washington Ltd,Singapore,rectangle,74.1,298,4.231603833788515,119.95909907395662
+3,15,Washington Ltd,Singapore,rectangle,100,29,13.491030680879145,119.51704669312002
+3,21,Washington Ltd,Singapore,rectangle,80,77,16.773503842714003,111.96831332396451
+3,39,Washington Ltd,Singapore,rectangle,30,107,14.386481002178806,111.36521846997117
+3,54,Washington Ltd,Singapore,rectangle,20,128,18.347624524212538,82.56347254588641
+3,67,Washington Ltd,Singapore,rectangle,40,137,16.432403595335433,107.42349298936162
+3,71,Washington Ltd,Singapore,rectangle,30,163,27.7819629289545,101.01980221694095
+3,97,Washington Ltd,Singapore,rectangle,80,160,14.263466015575585,96.4231325794911
+4,6,"Rogers, Foster and Smith",Tajikistan,rectangle,60,170,12.87391215820367,104.71919248234079
+4,12,"Rogers, Foster and Smith",Tajikistan,rectangle,30,86,11.447308336643108,106.0278593095174
+4,13,"Rogers, Foster and Smith",Tajikistan,rectangle,60,67,17.959186769416743,99.15097605050394
+4,25,"Rogers, Foster and Smith",Tajikistan,rectangle,40,172,13.783722401952748,94.7678713195295
+4,27,"Rogers, Foster and Smith",Tajikistan,rectangle,20,84,8.924712692873541,95.07383077816903
+4,31,"Rogers, Foster and Smith",Tajikistan,rectangle,80,22,18.345439809324237,95.84197050444364
+4,36,"Rogers, Foster and Smith",Tajikistan,rectangle,40,263,16.890234232205454,102.30519320863824
+4,38,"Rogers, Foster and Smith",Tajikistan,rectangle,80,131,14.229806169063947,83.5775553858667
+4,39,"Rogers, Foster and Smith",Tajikistan,rectangle,44.5,19,12.072474031468145,104.86919438714253
+4,42,"Rogers, Foster and Smith",Tajikistan,rectangle,60,250,22.29124891571992,116.81728038624323
+4,64,"Rogers, Foster and Smith",Tajikistan,rectangle,50,149,16.00802180255808,84.50883270936883
+4,67,"Rogers, Foster and Smith",Tajikistan,rectangle,74.1,291,9.67341489746109,114.47901241038034
+4,69,"Rogers, Foster and Smith",Tajikistan,rectangle,44.5,6,13.680417885380958,91.82469878628906
+4,72,"Rogers, Foster and Smith",Tajikistan,rectangle,74.1,185,13.295816513548457,104.58506789091692
+4,77,"Rogers, Foster and Smith",Tajikistan,rectangle,20,206,13.619279256338734,106.92164877403027
+4,84,"Rogers, Foster and Smith",Tajikistan,rectangle,80,17,8.998060363716336,107.10923630338701
+4,94,"Rogers, Foster and Smith",Tajikistan,rectangle,90,170,12.167161245597809,85.34939294760237
+5,7,"Maxwell, Mitchell and Bowman",Liberia,rectangle,50,61,16.734496864132968,101.68659145298412
+5,24,"Maxwell, Mitchell and Bowman",Liberia,rectangle,80,256,13.835433974499395,89.00110625160673
+5,27,"Maxwell, Mitchell and Bowman",Liberia,rectangle,44.5,94,9.649914707784326,109.76180121506263
+5,28,"Maxwell, Mitchell and Bowman",Liberia,rectangle,90,274,10.164643975921656,112.22936592002316
+5,36,"Maxwell, Mitchell and Bowman",Liberia,rectangle,74.1,169,16.297462088473743,100.11587700011468
+5,39,"Maxwell, Mitchell and Bowman",Liberia,rectangle,100,144,15.118902948924049,90.573777349631
+5,42,"Maxwell, Mitchell and Bowman",Liberia,rectangle,44.5,225,17.936118532074847,102.80759226566609
+5,43,"Maxwell, Mitchell and Bowman",Liberia,rectangle,80,176,18.574384763698006,103.14879151950265
+5,50,"Maxwell, Mitchell and Bowman",Liberia,rectangle,90,21,13.114900811448127,83.14075800537447
+5,56,"Maxwell, Mitchell and Bowman",Liberia,rectangle,100,182,14.370974794397052,112.49074793981727
+5,59,"Maxwell, Mitchell and Bowman",Liberia,rectangle,74.1,132,21.652525198430062,108.88219093620846
+5,66,"Maxwell, Mitchell and Bowman",Liberia,rectangle,90,252,18.195618088892747,97.99459878100497
+5,67,"Maxwell, Mitchell and Bowman",Liberia,rectangle,100,99,15.14682073228775,103.53790102628713
+5,80,"Maxwell, Mitchell and Bowman",Liberia,rectangle,44.5,207,22.24690893522134,106.92992531455197
+5,81,"Maxwell, Mitchell and Bowman",Liberia,rectangle,100,12,7.80431296340348,109.65336405493227
+5,93,"Maxwell, Mitchell and Bowman",Liberia,rectangle,50,61,11.349516493453198,94.54473666308647
+6,7,Jenkins and Sons,Cayman Islands,rectangle,60,258,13.711684387699702,107.24601165998718
+6,16,Jenkins and Sons,Cayman Islands,rectangle,30,296,9.32513662308507,92.51717070832039
+6,19,Jenkins and Sons,Cayman Islands,rectangle,50,126,10.46709477959609,90.36680030802844
+6,21,Jenkins and Sons,Cayman Islands,rectangle,20,282,19.117297898402015,97.25868819348233
+6,23,Jenkins and Sons,Cayman Islands,rectangle,50,246,15.443227779970302,81.87076038238348
+6,30,Jenkins and Sons,Cayman Islands,rectangle,60,72,16.467675107239895,91.41077263659486
+6,32,Jenkins and Sons,Cayman Islands,rectangle,60,58,15.962902632502741,108.19755360958577
+6,46,Jenkins and Sons,Cayman Islands,rectangle,40,163,11.269700334081485,103.12615054942766
+6,47,Jenkins and Sons,Cayman Islands,rectangle,80,273,9.575047305149699,112.49860539618008
+6,49,Jenkins and Sons,Cayman Islands,rectangle,50,185,12.41075395226728,92.05227488205544
+6,55,Jenkins and Sons,Cayman Islands,rectangle,100,50,7.048132606348848,100.65563747887477
+6,58,Jenkins and Sons,Cayman Islands,rectangle,74.1,196,19.31995357956333,99.31915579950538
+6,59,Jenkins and Sons,Cayman Islands,rectangle,100,71,15.79482801195297,101.72750375222344
+6,74,Jenkins and Sons,Cayman Islands,rectangle,40,76,24.555269311181597,101.3099148427509
+6,77,Jenkins and Sons,Cayman Islands,rectangle,100,249,13.815261216044973,104.66076227423744
+6,84,Jenkins and Sons,Cayman Islands,rectangle,50,256,5.987535775778243,83.2906777077982
+6,86,Jenkins and Sons,Cayman Islands,rectangle,74.1,77,10.071280319803119,83.97223942562097
+7,11,"Neal, Smith and Warren",Niue,rectangle,80,177,18.118292778500628,95.93163987528015
+7,24,"Neal, Smith and Warren",Niue,rectangle,60,266,33.102512512052854,112.68756884329777
+7,28,"Neal, Smith and Warren",Niue,rectangle,60,233,18.615981999587998,86.13238308868316
+7,29,"Neal, Smith and Warren",Niue,rectangle,60,221,23.888327392342866,87.38912407095926
+7,41,"Neal, Smith and Warren",Niue,rectangle,60,2,16.15274670157464,101.74199225036433
+7,42,"Neal, Smith and Warren",Niue,rectangle,20,125,7.430499882537173,95.18944828730599
+7,45,"Neal, Smith and Warren",Niue,rectangle,20,89,21.544309795230966,119.36024654315122
+7,61,"Neal, Smith and Warren",Niue,rectangle,74.1,32,18.595119240110197,109.89390096608167
+7,69,"Neal, Smith and Warren",Niue,rectangle,90,205,11.673595207778641,111.16702358962924
+7,78,"Neal, Smith and Warren",Niue,rectangle,30,31,18.360554676446,104.0872853933495
+7,79,"Neal, Smith and Warren",Niue,rectangle,44.5,12,9.685625040104572,93.24417076274244
+7,98,"Neal, Smith and Warren",Niue,rectangle,40,154,15.387312661092647,86.27234084204356
+8,9,Williams-Anderson,Uganda,rectangle,20,158,16.73054159514577,98.70110331183331
+8,20,Williams-Anderson,Uganda,rectangle,100,55,12.439323973533769,83.74449779122986
+8,25,Williams-Anderson,Uganda,rectangle,74.1,274,18.755243445755372,115.82184475174915
+8,26,Williams-Anderson,Uganda,rectangle,60,237,16.250788247874915,93.88304349907223
+8,28,Williams-Anderson,Uganda,rectangle,20,48,16.266597269774994,95.0903482984347
+8,44,Williams-Anderson,Uganda,rectangle,74.1,39,8.000398277216195,85.12573529576356
+8,66,Williams-Anderson,Uganda,rectangle,80,35,21.543503209977732,120.9770359654798
+8,80,Williams-Anderson,Uganda,rectangle,30,234,16.152205020867886,107.00899861080887
+8,88,Williams-Anderson,Uganda,rectangle,80,166,13.91574336708271,88.72061454993124
+8,93,Williams-Anderson,Uganda,rectangle,44.5,48,7.074609251641809,78.26548895324318
+9,11,Miller-Roberts,Sao Tome and Principe,round-rectangle,20,266,13.05926100702877,86.48961302715064
+9,16,Miller-Roberts,Sao Tome and Principe,round-rectangle,74.1,200,15.34604940683902,81.80453005126766
+9,25,Miller-Roberts,Sao Tome and Principe,round-rectangle,40,42,21.32680334812422,117.14598915170703
+9,34,Miller-Roberts,Sao Tome and Principe,round-rectangle,40,126,16.29656695181291,96.50186680942323
+9,36,Miller-Roberts,Sao Tome and Principe,round-rectangle,74.1,295,13.206702138213164,105.01001531948533
+9,50,Miller-Roberts,Sao Tome and Principe,round-rectangle,40,232,17.448397522811764,86.37859380339867
+9,55,Miller-Roberts,Sao Tome and Principe,round-rectangle,40,299,15.538759103958323,98.29226329734742
+9,66,Miller-Roberts,Sao Tome and Principe,round-rectangle,74.1,186,16.886552024698283,107.38017612121126
+9,71,Miller-Roberts,Sao Tome and Principe,round-rectangle,60,78,26.708292835429102,108.1439123955891
+9,75,Miller-Roberts,Sao Tome and Principe,round-rectangle,44.5,204,19.6050274737531,113.8230744066001
+9,77,Miller-Roberts,Sao Tome and Principe,round-rectangle,60,12,12.394665258983208,105.94300429990828
+9,88,Miller-Roberts,Sao Tome and Principe,round-rectangle,100,98,8.754699635809008,104.0921195271436
+9,99,Miller-Roberts,Sao Tome and Principe,round-rectangle,30,271,14.160157882195822,87.36059136357511
+10,18,Hernandez-Liu,Haiti,round-rectangle,90,102,16.86227890699415,93.78324065588434
+10,27,Hernandez-Liu,Haiti,round-rectangle,20,123,15.432138809010524,106.01817346217868
+10,38,Hernandez-Liu,Haiti,round-rectangle,100,41,13.297698063454247,116.07750634434908
+10,54,Hernandez-Liu,Haiti,round-rectangle,100,201,0.5044694583119416,100.6598488023843
+10,55,Hernandez-Liu,Haiti,round-rectangle,50,204,16.85332387212393,89.50582939234737
+10,60,Hernandez-Liu,Haiti,round-rectangle,30,126,9.313769258198949,95.46086150405517
+10,77,Hernandez-Liu,Haiti,round-rectangle,44.5,271,8.58084371190115,119.98563584087194
+10,79,Hernandez-Liu,Haiti,round-rectangle,20,83,8.480553156472787,114.27848704579907
+10,83,Hernandez-Liu,Haiti,round-rectangle,90,89,15.611251468727897,97.24565071745495
+10,86,Hernandez-Liu,Haiti,round-rectangle,40,220,17.72485703646237,101.72915790334167
+11,15,"Koch, Bailey and Griffith",Albania,rectangle,30,51,22.210267579176616,110.5663004101255
+11,18,"Koch, Bailey and Griffith",Albania,rectangle,90,93,11.938184073705312,114.46021825763287
+11,27,"Koch, Bailey and Griffith",Albania,rectangle,90,20,17.64232794330121,107.11983499041123
+11,31,"Koch, Bailey and Griffith",Albania,rectangle,80,121,15.887493397280716,113.29308963736781
+11,37,"Koch, Bailey and Griffith",Albania,rectangle,80,92,20.274938950325083,103.63117652497682
+11,40,"Koch, Bailey and Griffith",Albania,rectangle,30,76,14.784217268021585,105.98288531534193
+11,43,"Koch, Bailey and Griffith",Albania,rectangle,74.1,121,18.98668046701281,111.8591029296385
+11,46,"Koch, Bailey and Griffith",Albania,rectangle,44.5,135,7.8656770247837615,101.97074436250377
+11,47,"Koch, Bailey and Griffith",Albania,rectangle,60,102,11.303956241736563,103.39524722792594
+11,55,"Koch, Bailey and Griffith",Albania,rectangle,60,56,11.235165015983721,99.30199138447408
+11,56,"Koch, Bailey and Griffith",Albania,rectangle,44.5,9,16.609133524821452,85.49490223451431
+11,61,"Koch, Bailey and Griffith",Albania,rectangle,20,21,8.236793060459785,102.60036921208717
+11,63,"Koch, Bailey and Griffith",Albania,rectangle,50,293,15.440860208069717,95.75769338106817
+11,67,"Koch, Bailey and Griffith",Albania,rectangle,20,233,17.904154834474884,102.23008941504209
+11,71,"Koch, Bailey and Griffith",Albania,rectangle,40,125,15.461803513407785,97.47317050212818
+11,79,"Koch, Bailey and Griffith",Albania,rectangle,40,134,16.227205083711215,101.54856662561703
+11,83,"Koch, Bailey and Griffith",Albania,rectangle,60,144,7.761816829205934,90.25930733271281
+12,23,"Montes, Rogers and Stone",Germany,ellipse,90,169,22.232606512456087,90.43988061340104
+12,36,"Montes, Rogers and Stone",Germany,ellipse,60,226,10.307857212760167,112.45768817567574
+12,37,"Montes, Rogers and Stone",Germany,ellipse,40,227,21.29855452507712,124.15013668077377
+12,44,"Montes, Rogers and Stone",Germany,ellipse,100,75,8.914404132927391,100.94107917399901
+12,56,"Montes, Rogers and Stone",Germany,ellipse,60,125,12.207692664034221,96.81277181708941
+12,57,"Montes, Rogers and Stone",Germany,ellipse,80,164,21.20302746291027,101.18648153582282
+12,59,"Montes, Rogers and Stone",Germany,ellipse,74.1,266,23.94625987022779,93.91478721526256
+12,67,"Montes, Rogers and Stone",Germany,ellipse,20,80,13.333004011357097,87.84805024890669
+12,92,"Montes, Rogers and Stone",Germany,ellipse,20,61,12.84578063983084,109.01720806423145
+12,97,"Montes, Rogers and Stone",Germany,ellipse,80,214,20.82596233320061,106.92291476147068
+12,98,"Montes, Rogers and Stone",Germany,ellipse,100,281,11.442543529660508,101.49953945994686
+13,17,"Cardenas, Patterson and Roberts",Kiribati,rectangle,100,276,6.716154105878196,111.75097639785406
+13,40,"Cardenas, Patterson and Roberts",Kiribati,rectangle,44.5,296,18.204367838857443,87.74268930017803
+13,43,"Cardenas, Patterson and Roberts",Kiribati,rectangle,40,17,16.728613695567898,92.62828086281333
+13,44,"Cardenas, Patterson and Roberts",Kiribati,rectangle,90,300,19.34917973055518,106.06388187031081
+13,49,"Cardenas, Patterson and Roberts",Kiribati,rectangle,44.5,55,28.17374187228313,103.87172790506494
+13,55,"Cardenas, Patterson and Roberts",Kiribati,rectangle,80,248,8.281505740205876,85.50309919895082
+13,70,"Cardenas, Patterson and Roberts",Kiribati,rectangle,50,20,10.837762872970693,103.82690737847147
+13,77,"Cardenas, Patterson and Roberts",Kiribati,rectangle,80,133,9.67095959394327,81.40106687716064
+13,81,"Cardenas, Patterson and Roberts",Kiribati,rectangle,20,295,8.564429132637688,87.67639573488032
+13,94,"Cardenas, Patterson and Roberts",Kiribati,rectangle,44.5,294,19.7923457119252,96.15206631814769
+14,16,Hernandez LLC,Montenegro,round-rectangle,44.5,199,16.177902290085402,105.36780742574324
+14,20,Hernandez LLC,Montenegro,round-rectangle,90,4,6.200081176252905,97.09641641642415
+14,32,Hernandez LLC,Montenegro,round-rectangle,30,131,18.619753912430195,92.93865642297345
+14,50,Hernandez LLC,Montenegro,round-rectangle,40,183,11.512240871521602,90.12292527199216
+14,74,Hernandez LLC,Montenegro,round-rectangle,44.5,260,12.6011194918526,107.1944818491477
+14,93,Hernandez LLC,Montenegro,round-rectangle,20,50,18.752024551502824,98.8185612504926
+15,33,Ingram Group,Kenya,round-rectangle,44.5,154,22.57583780680457,115.01019092945552
+15,35,Ingram Group,Kenya,round-rectangle,60,284,19.109783191541815,116.5714845827337
+15,63,Ingram Group,Kenya,round-rectangle,50,104,14.26665930280224,111.19630233911731
+15,73,Ingram Group,Kenya,round-rectangle,90,46,10.776842433478972,113.40391614040067
+15,82,Ingram Group,Kenya,round-rectangle,40,298,16.25847723146954,92.5461242441156
+15,85,Ingram Group,Kenya,round-rectangle,20,141,18.351560171812697,93.20078098586988
+15,89,Ingram Group,Kenya,round-rectangle,90,232,4.9997892715596155,111.78203697946876
+15,94,Ingram Group,Kenya,round-rectangle,74.1,83,12.810794192724398,95.55013934476351
+16,22,Martinez and Sons,Kenya,rectangle,60,102,13.281342868487169,106.64486101995762
+16,27,Martinez and Sons,Kenya,rectangle,50,199,21.7168359844848,100.78592990512863
+16,39,Martinez and Sons,Kenya,rectangle,100,3,21.025337447835255,93.50528068422322
+16,50,Martinez and Sons,Kenya,rectangle,50,85,13.73313702686565,103.05896368679845
+16,52,Martinez and Sons,Kenya,rectangle,30,287,22.423524021496277,76.60376457048635
+16,53,Martinez and Sons,Kenya,rectangle,30,138,7.408107596252017,95.21710217362494
+16,58,Martinez and Sons,Kenya,rectangle,74.1,142,17.458303699056582,95.13881933916568
+16,61,Martinez and Sons,Kenya,rectangle,74.1,53,18.370576464709885,88.61962299464484
+16,62,Martinez and Sons,Kenya,rectangle,40,157,5.820946216465181,100.70807688062129
+16,65,Martinez and Sons,Kenya,rectangle,90,226,17.256628893214152,91.18461751198869
+16,67,Martinez and Sons,Kenya,rectangle,40,9,19.3582564638458,95.47567833396354
+16,71,Martinez and Sons,Kenya,rectangle,40,3,12.36917113005266,95.87475978338848
+16,72,Martinez and Sons,Kenya,rectangle,60,85,11.868772638939472,99.02983416736917
+16,74,Martinez and Sons,Kenya,rectangle,20,116,18.401751405493975,79.46379461756834
+16,79,Martinez and Sons,Kenya,rectangle,90,234,12.81459740320952,87.46259619082444
+17,18,"White, Morris and Harvey",Tanzania,round-rectangle,90,169,16.915049673529868,100.87178076661306
+17,27,"White, Morris and Harvey",Tanzania,round-rectangle,40,224,14.354464879946137,118.40377875768242
+17,31,"White, Morris and Harvey",Tanzania,round-rectangle,74.1,172,14.975494945653336,94.77311737582757
+17,33,"White, Morris and Harvey",Tanzania,round-rectangle,30,206,20.618365861259253,89.12327129553672
+17,44,"White, Morris and Harvey",Tanzania,round-rectangle,50,223,21.436385648753756,122.90323138275092
+17,54,"White, Morris and Harvey",Tanzania,round-rectangle,50,195,15.985981881885495,106.88617680249718
+17,59,"White, Morris and Harvey",Tanzania,round-rectangle,100,259,5.996148960821541,93.96562813862151
+17,65,"White, Morris and Harvey",Tanzania,round-rectangle,40,32,14.985185890041773,97.8917479459732
+17,70,"White, Morris and Harvey",Tanzania,round-rectangle,60,247,12.655242918714867,103.40751375393795
+17,75,"White, Morris and Harvey",Tanzania,round-rectangle,90,183,11.475044826754184,96.71816969484361
+17,80,"White, Morris and Harvey",Tanzania,round-rectangle,30,10,15.949751115218161,103.1086256533705
+17,90,"White, Morris and Harvey",Tanzania,round-rectangle,100,43,9.67208246388794,89.78164178883078
+17,98,"White, Morris and Harvey",Tanzania,round-rectangle,40,128,17.807296712025067,108.96521168290566
+18,24,Thomas Group,Guadeloupe,rectangle,30,19,10.812024438449633,117.38305068415374
+18,29,Thomas Group,Guadeloupe,rectangle,80,29,12.840510039097529,104.33459312279804
+18,31,Thomas Group,Guadeloupe,rectangle,80,286,11.642710789190321,99.26700592936554
+18,34,Thomas Group,Guadeloupe,rectangle,44.5,126,16.313372265462966,102.98016809563515
+18,47,Thomas Group,Guadeloupe,rectangle,74.1,273,23.136949800135728,101.27157987081075
+18,54,Thomas Group,Guadeloupe,rectangle,50,23,20.01934657390702,100.85866139906977
+18,59,Thomas Group,Guadeloupe,rectangle,40,197,20.58704294216411,96.49778204167427
+18,64,Thomas Group,Guadeloupe,rectangle,74.1,54,15.36161121728475,90.24316626849583
+18,74,Thomas Group,Guadeloupe,rectangle,40,6,20.561133165201635,87.00082514382532
+18,78,Thomas Group,Guadeloupe,rectangle,30,144,12.127321079978644,112.71559455337984
+18,86,Thomas Group,Guadeloupe,rectangle,20,175,8.829347629816315,100.24148767295013
+18,88,Thomas Group,Guadeloupe,rectangle,60,7,-0.2831972579745301,104.57194727498288
+19,40,"Blanchard, Hardin and Haley",Albania,rectangle,90,49,14.559742009307318,92.38746331237685
+19,62,"Blanchard, Hardin and Haley",Albania,rectangle,80,212,10.9780140186656,105.29909312286112
+19,70,"Blanchard, Hardin and Haley",Albania,rectangle,90,75,19.675645217663348,96.61020038674258
+19,71,"Blanchard, Hardin and Haley",Albania,rectangle,50,183,16.008200373505602,87.8972708966605
+19,76,"Blanchard, Hardin and Haley",Albania,rectangle,50,22,17.23363260354172,108.2619855351721
+19,78,"Blanchard, Hardin and Haley",Albania,rectangle,60,150,12.706970742319772,104.60462096507516
+19,80,"Blanchard, Hardin and Haley",Albania,rectangle,100,266,18.07105780505468,114.45624415073337
+19,84,"Blanchard, Hardin and Haley",Albania,rectangle,30,151,11.330505140482064,96.7309444428353
+19,91,"Blanchard, Hardin and Haley",Albania,rectangle,30,142,13.987698155529488,103.4648242644299
+19,99,"Blanchard, Hardin and Haley",Albania,rectangle,30,126,14.70718026429219,106.14346897778115
+20,25,Rogers Group,Liberia,round-rectangle,30,129,26.96892552195407,86.1597971312211
+20,30,Rogers Group,Liberia,round-rectangle,60,20,14.040161451620673,103.21237066822043
+20,34,Rogers Group,Liberia,round-rectangle,80,206,10.743112199092563,115.94901064384972
+20,36,Rogers Group,Liberia,round-rectangle,40,120,10.717952370376032,81.80861424355818
+20,40,Rogers Group,Liberia,round-rectangle,44.5,51,20.955597810384834,80.19100701166101
+20,46,Rogers Group,Liberia,round-rectangle,30,128,17.71171157891467,102.96363880662332
+20,56,Rogers Group,Liberia,round-rectangle,44.5,226,19.2332679202314,97.87392220173707
+20,59,Rogers Group,Liberia,round-rectangle,44.5,7,14.604856453466853,106.19423776891361
+20,81,Rogers Group,Liberia,round-rectangle,20,263,16.40399550514889,90.91457544516612
+20,85,Rogers Group,Liberia,round-rectangle,20,30,13.795135146181508,96.07620216064771
+20,90,Rogers Group,Liberia,round-rectangle,90,61,10.762079498746823,104.63279923809344
+21,27,Martin-Hernandez,Fiji,round-rectangle,30,89,15.628149317711117,89.75618719689093
+21,31,Martin-Hernandez,Fiji,round-rectangle,60,265,17.796765048220713,101.5838542154265
+21,35,Martin-Hernandez,Fiji,round-rectangle,100,294,15.033327634133716,97.01271028434877
+21,42,Martin-Hernandez,Fiji,round-rectangle,80,235,17.064007513144567,94.09264554960403
+21,49,Martin-Hernandez,Fiji,round-rectangle,60,56,15.609598330578555,91.88863156855186
+21,68,Martin-Hernandez,Fiji,round-rectangle,60,83,19.190552758349366,99.06623416935209
+21,82,Martin-Hernandez,Fiji,round-rectangle,44.5,278,14.583795186667276,106.36868476438048
+21,83,Martin-Hernandez,Fiji,round-rectangle,90,82,17.33198708607385,90.1576805373342
+21,85,Martin-Hernandez,Fiji,round-rectangle,80,252,19.03573141490918,100.2150759571274
+21,92,Martin-Hernandez,Fiji,round-rectangle,100,158,16.032379282756995,101.95667057502739
+21,95,Martin-Hernandez,Fiji,round-rectangle,80,175,11.50562019707997,101.99893728054992
+22,23,Finley-Morales,French Southern Territories,rectangle,100,248,21.594292277321223,85.72700619737806
+22,24,Finley-Morales,French Southern Territories,rectangle,44.5,273,18.334479405437815,103.48710104999276
+22,34,Finley-Morales,French Southern Territories,rectangle,20,143,11.365945635619449,96.71539455613596
+22,39,Finley-Morales,French Southern Territories,rectangle,60,11,12.61324585760481,98.74514370031872
+22,51,Finley-Morales,French Southern Territories,rectangle,100,157,8.718299698851713,103.04923280823812
+22,66,Finley-Morales,French Southern Territories,rectangle,74.1,39,10.624797776419213,107.09671048277207
+22,71,Finley-Morales,French Southern Territories,rectangle,74.1,93,8.873841813240379,101.99865013608503
+22,75,Finley-Morales,French Southern Territories,rectangle,40,120,16.60704044134179,114.74319309576697
+22,76,Finley-Morales,French Southern Territories,rectangle,90,117,14.791459027516122,101.5053614241897
+22,82,Finley-Morales,French Southern Territories,rectangle,60,113,15.023685112840509,78.65524354418457
+22,99,Finley-Morales,French Southern Territories,rectangle,20,153,6.886396985390116,98.78378127618397
+23,27,Willis-Walters,Zimbabwe,rectangle,30,104,7.375092023665695,97.69714708328891
+23,37,Willis-Walters,Zimbabwe,rectangle,50,181,16.622293479695834,85.61206466707931
+23,45,Willis-Walters,Zimbabwe,rectangle,20,57,18.888051622262367,90.96798369086473
+23,50,Willis-Walters,Zimbabwe,rectangle,44.5,194,15.3826945695202,110.69704065106265
+23,55,Willis-Walters,Zimbabwe,rectangle,20,119,24.175930282065977,91.79983888023507
+23,65,Willis-Walters,Zimbabwe,rectangle,90,91,5.9952989362687905,101.65648348935595
+23,69,Willis-Walters,Zimbabwe,rectangle,100,261,17.69184468406251,90.25603405131058
+23,88,Willis-Walters,Zimbabwe,rectangle,60,266,15.360385502947064,100.92330860301684
+24,37,Lee LLC,Jordan,rectangle,30,75,13.157674883241683,89.74456209568967
+24,41,Lee LLC,Jordan,rectangle,100,104,7.352582829176272,101.525974393609
+24,43,Lee LLC,Jordan,rectangle,100,138,12.636920122455512,88.60540305904917
+24,44,Lee LLC,Jordan,rectangle,100,107,6.620854664079044,98.09063762994374
+24,45,Lee LLC,Jordan,rectangle,44.5,184,16.49073648775426,110.2746111408761
+24,47,Lee LLC,Jordan,rectangle,50,290,18.332056745151007,93.56548139160638
+24,59,Lee LLC,Jordan,rectangle,80,283,12.4719567364649,91.96659994284792
+24,60,Lee LLC,Jordan,rectangle,30,273,9.349434866218482,102.2752742626576
+24,61,Lee LLC,Jordan,rectangle,44.5,233,9.251950427897071,90.04625131171612
+24,73,Lee LLC,Jordan,rectangle,60,279,10.968937900045692,96.55449061654707
+24,78,Lee LLC,Jordan,rectangle,20,56,16.536756828152676,98.79407774358994
+24,81,Lee LLC,Jordan,rectangle,20,69,8.370341830534462,78.65531841306982
+24,91,Lee LLC,Jordan,rectangle,90,232,29.01809378382567,105.1619166206185
+24,93,Lee LLC,Jordan,rectangle,100,14,12.019702115869912,106.98663133108303
+25,27,White-Cross,Qatar,rectangle,30,97,16.11287304595849,107.85556432167046
+25,30,White-Cross,Qatar,rectangle,44.5,202,4.804812487031182,98.24249925856932
+25,33,White-Cross,Qatar,rectangle,30,283,17.123000035688,97.41722466190016
+25,39,White-Cross,Qatar,rectangle,80,178,13.08402202720988,120.78830911558003
+25,43,White-Cross,Qatar,rectangle,50,9,17.130052785798892,107.1408169738638
+25,49,White-Cross,Qatar,rectangle,90,267,17.207519518981275,90.0185369151523
+25,50,White-Cross,Qatar,rectangle,50,275,19.20730889764345,97.01664045085826
+25,53,White-Cross,Qatar,rectangle,30,275,21.07939193748276,110.05124792992638
+25,59,White-Cross,Qatar,rectangle,74.1,300,12.924636957412126,105.47377409885019
+25,64,White-Cross,Qatar,rectangle,50,83,15.547670899623547,97.86363387796776
+25,65,White-Cross,Qatar,rectangle,90,228,16.205514229232673,83.38570966177687
+25,66,White-Cross,Qatar,rectangle,44.5,137,14.502735274539273,89.07012257322023
+25,70,White-Cross,Qatar,rectangle,50,223,15.653575827351279,97.4531378828352
+25,72,White-Cross,Qatar,rectangle,50,146,13.36278794480475,97.85023980798742
+25,77,White-Cross,Qatar,rectangle,30,4,12.016543548857387,101.03342063173226
+25,86,White-Cross,Qatar,rectangle,50,251,5.401611491358045,107.85878223780242
+25,88,White-Cross,Qatar,rectangle,74.1,191,16.959208954468696,103.54959959661066
+26,27,Smith-Ford,Nepal,round-rectangle,90,46,21.974745029739438,79.65634294382723
+26,35,Smith-Ford,Nepal,round-rectangle,90,200,6.382860370272557,97.27654788580318
+26,43,Smith-Ford,Nepal,round-rectangle,80,284,17.17397768157768,92.04275307315254
+26,48,Smith-Ford,Nepal,round-rectangle,100,21,13.088391778454879,108.16747704036885
+26,57,Smith-Ford,Nepal,round-rectangle,60,18,18.794148387512067,101.78705404912587
+26,59,Smith-Ford,Nepal,round-rectangle,44.5,215,19.197274042971898,101.74164505214577
+26,61,Smith-Ford,Nepal,round-rectangle,80,150,19.442760711616874,107.19646077987716
+26,71,Smith-Ford,Nepal,round-rectangle,40,155,9.112194997426364,97.90127006687777
+26,88,Smith-Ford,Nepal,round-rectangle,60,57,14.074628392762383,113.79897369580866
+26,98,Smith-Ford,Nepal,round-rectangle,100,59,18.76841218872962,84.95842505003554
+27,46,Conway PLC,Iran,round-rectangle,60,223,18.24462640144678,96.6086944647266
+27,51,Conway PLC,Iran,round-rectangle,44.5,84,18.200545751199726,102.85250960702847
+27,60,Conway PLC,Iran,round-rectangle,50,285,21.145113360535763,91.47243408308196
+27,68,Conway PLC,Iran,round-rectangle,50,218,19.40006572392796,101.57541133349376
+27,69,Conway PLC,Iran,round-rectangle,44.5,270,6.436708896300358,106.38287294036151
+27,88,Conway PLC,Iran,round-rectangle,20,100,14.898738144348862,100.55332461141859
+27,98,Conway PLC,Iran,round-rectangle,80,196,18.39988919099794,82.9952301905461
+28,30,Bradley LLC,Cambodia,round-rectangle,30,246,14.345003339813726,102.13564691304013
+28,57,Bradley LLC,Cambodia,round-rectangle,80,56,7.478978706644153,95.26632014425037
+28,62,Bradley LLC,Cambodia,round-rectangle,100,258,11.4386615084258,94.53633704579914
+28,71,Bradley LLC,Cambodia,round-rectangle,80,92,20.569413260686815,94.84741713957645
+28,82,Bradley LLC,Cambodia,round-rectangle,90,9,8.91217864978297,109.85025761659047
+28,96,Bradley LLC,Cambodia,round-rectangle,50,131,17.697000798339488,91.02425373684409
+28,98,Bradley LLC,Cambodia,round-rectangle,100,104,19.308189268999197,85.31989603445885
+29,30,"Richard, Mora and Cox",Cameroon,round-rectangle,90,82,16.163801557032382,66.53279792757567
+29,36,"Richard, Mora and Cox",Cameroon,round-rectangle,20,207,16.70183730139117,114.79322229105864
+29,37,"Richard, Mora and Cox",Cameroon,round-rectangle,80,204,6.423284186882832,108.07191646920253
+29,39,"Richard, Mora and Cox",Cameroon,round-rectangle,50,65,8.230753665584821,108.91900304801334
+29,59,"Richard, Mora and Cox",Cameroon,round-rectangle,60,3,15.310674160530283,104.44008653592584
+29,62,"Richard, Mora and Cox",Cameroon,round-rectangle,44.5,182,17.329446280533617,84.45224800500992
+29,80,"Richard, Mora and Cox",Cameroon,round-rectangle,40,91,11.93840719853841,100.89058454301973
+29,87,"Richard, Mora and Cox",Cameroon,round-rectangle,30,200,13.11355803268972,99.59901673778218
+29,96,"Richard, Mora and Cox",Cameroon,round-rectangle,74.1,69,10.325991861730385,112.17541431915568
+29,97,"Richard, Mora and Cox",Cameroon,round-rectangle,100,95,22.496520018824288,82.41293889721973
+29,99,"Richard, Mora and Cox",Cameroon,round-rectangle,50,82,11.608221167502077,100.50779152550854
+30,54,Jones LLC,Cayman Islands,rectangle,20,35,19.35908466530645,96.90325166373074
+30,66,Jones LLC,Cayman Islands,rectangle,50,104,8.014729130160894,85.94356300425068
+30,67,Jones LLC,Cayman Islands,rectangle,80,187,17.39655376137752,95.16478044529254
+30,71,Jones LLC,Cayman Islands,rectangle,74.1,183,13.167533116292187,91.32487878317079
+30,79,Jones LLC,Cayman Islands,rectangle,100,98,18.822813587464108,102.8815198034225
+30,97,Jones LLC,Cayman Islands,rectangle,80,22,14.583292113491707,98.18794775970078
+31,32,Cooper PLC,Serbia,round-rectangle,40,129,14.525559472888496,102.8182057669061
+31,35,Cooper PLC,Serbia,round-rectangle,90,193,16.157918439510404,89.2375458517118
+31,39,Cooper PLC,Serbia,round-rectangle,74.1,202,17.568191434989995,106.75846331236907
+31,52,Cooper PLC,Serbia,round-rectangle,44.5,52,20.577875372042307,82.67086196107019
+31,57,Cooper PLC,Serbia,round-rectangle,30,119,16.174304438205297,101.5677952456941
+31,60,Cooper PLC,Serbia,round-rectangle,74.1,179,8.461528425157333,109.98873182634793
+31,61,Cooper PLC,Serbia,round-rectangle,44.5,294,20.854965590925953,112.38017680719997
+31,64,Cooper PLC,Serbia,round-rectangle,74.1,99,14.908997506551698,99.19210497036917
+31,69,Cooper PLC,Serbia,round-rectangle,30,118,7.970463955350549,99.10851591687957
+31,73,Cooper PLC,Serbia,round-rectangle,20,114,27.512111516737974,104.58916073914385
+31,81,Cooper PLC,Serbia,round-rectangle,44.5,42,9.285291942891801,96.89893732324644
+31,94,Cooper PLC,Serbia,round-rectangle,90,84,12.18933630405866,88.76506798568033
+32,33,"Hines, Malone and Martinez",Niue,ellipse,50,215,16.197519949429754,95.13289080191862
+32,44,"Hines, Malone and Martinez",Niue,ellipse,20,232,8.40682970720289,114.41665941497419
+32,49,"Hines, Malone and Martinez",Niue,ellipse,40,256,20.429686996114444,121.1127764626234
+32,57,"Hines, Malone and Martinez",Niue,ellipse,74.1,72,8.94168372191896,134.0005584122531
+32,59,"Hines, Malone and Martinez",Niue,ellipse,50,114,8.44105288375508,80.00506547401677
+32,60,"Hines, Malone and Martinez",Niue,ellipse,30,171,16.254679960708195,100.89778345391395
+32,61,"Hines, Malone and Martinez",Niue,ellipse,100,249,2.0516042113545403,99.58551807778373
+32,63,"Hines, Malone and Martinez",Niue,ellipse,40,29,11.432249112141186,78.44303598823323
+32,86,"Hines, Malone and Martinez",Niue,ellipse,60,253,14.968217230054067,75.60317523339478
+32,87,"Hines, Malone and Martinez",Niue,ellipse,40,15,21.508523518195464,100.34480048684743
+32,88,"Hines, Malone and Martinez",Niue,ellipse,30,132,15.297810266720337,115.646448117195
+32,95,"Hines, Malone and Martinez",Niue,ellipse,60,182,7.945314081900063,84.84941725292356
+32,99,"Hines, Malone and Martinez",Niue,ellipse,100,180,20.32148109996433,105.50567862619846
+33,53,Edwards and Sons,Cook Islands,rectangle,40,59,11.58261393249806,100.01290663784859
+33,55,Edwards and Sons,Cook Islands,rectangle,50,126,9.38825678574245,79.60388516644149
+33,61,Edwards and Sons,Cook Islands,rectangle,50,144,22.400681052066307,117.66904490024197
+33,63,Edwards and Sons,Cook Islands,rectangle,60,57,12.946887543350483,94.78789442794283
+33,79,Edwards and Sons,Cook Islands,rectangle,90,97,16.602679943164134,86.90363145543876
+33,82,Edwards and Sons,Cook Islands,rectangle,30,216,12.257811552811475,108.19488748205666
+33,83,Edwards and Sons,Cook Islands,rectangle,44.5,8,13.000985935893747,76.56667287427975
+34,35,"Patrick, Mays and Clark",Tonga,round-rectangle,60,163,7.887771401431628,107.22725161933923
+34,40,"Patrick, Mays and Clark",Tonga,round-rectangle,100,218,17.78889795434245,94.37453180077556
+34,47,"Patrick, Mays and Clark",Tonga,round-rectangle,100,124,17.247884489748266,90.70285556032013
+34,60,"Patrick, Mays and Clark",Tonga,round-rectangle,80,140,15.889956008050074,110.8230513621696
+34,66,"Patrick, Mays and Clark",Tonga,round-rectangle,50,66,30.600780115348755,90.85652382158517
+34,70,"Patrick, Mays and Clark",Tonga,round-rectangle,100,154,13.53385661234446,100.55911208144403
+34,77,"Patrick, Mays and Clark",Tonga,round-rectangle,44.5,44,7.39784000650301,96.24809288292326
+34,79,"Patrick, Mays and Clark",Tonga,round-rectangle,20,53,12.385055116389584,90.08753914984953
+34,86,"Patrick, Mays and Clark",Tonga,round-rectangle,80,291,16.08410865828325,102.06389376934722
+34,92,"Patrick, Mays and Clark",Tonga,round-rectangle,80,45,22.262395763252314,83.68573256100198
+34,95,"Patrick, Mays and Clark",Tonga,round-rectangle,80,4,15.981235011432391,114.53703130062499
+35,40,Hernandez-Mcintosh,Mali,round-rectangle,40,13,10.25353219633515,88.0140076069947
+35,53,Hernandez-Mcintosh,Mali,round-rectangle,80,44,16.905961396746243,94.22628855247066
+35,64,Hernandez-Mcintosh,Mali,round-rectangle,90,268,26.15237630213612,102.10004511177003
+35,66,Hernandez-Mcintosh,Mali,round-rectangle,100,79,13.163651393212364,105.04492746685749
+35,71,Hernandez-Mcintosh,Mali,round-rectangle,90,57,17.926394499077723,94.20433782378547
+35,72,Hernandez-Mcintosh,Mali,round-rectangle,30,108,20.082133751980003,107.9252264179727
+35,74,Hernandez-Mcintosh,Mali,round-rectangle,44.5,17,16.999690890383288,105.00283324785762
+35,75,Hernandez-Mcintosh,Mali,round-rectangle,74.1,258,12.48430480244246,79.53030143196358
+35,86,Hernandez-Mcintosh,Mali,round-rectangle,60,193,15.793109367467629,94.68719592856435
+35,97,Hernandez-Mcintosh,Mali,round-rectangle,50,143,10.29503825744835,101.19103872436762
+36,38,"Pollard, Mccarty and Eaton",French Polynesia,ellipse,30,157,13.346408832038986,101.37937802983012
+36,40,"Pollard, Mccarty and Eaton",French Polynesia,ellipse,60,62,4.897821941695117,89.71589254046555
+36,42,"Pollard, Mccarty and Eaton",French Polynesia,ellipse,30,72,20.83298005050547,107.8376130561445
+36,56,"Pollard, Mccarty and Eaton",French Polynesia,ellipse,80,276,9.397597369083227,95.62201587290306
+36,66,"Pollard, Mccarty and Eaton",French Polynesia,ellipse,30,267,12.709559902925077,104.92883028291847
+36,70,"Pollard, Mccarty and Eaton",French Polynesia,ellipse,90,220,16.00905099373896,101.50325908146151
+36,76,"Pollard, Mccarty and Eaton",French Polynesia,ellipse,40,35,17.757926623105682,97.57606871307445
+36,83,"Pollard, Mccarty and Eaton",French Polynesia,ellipse,100,249,5.117455052775405,83.37572102170556
+36,92,"Pollard, Mccarty and Eaton",French Polynesia,ellipse,40,239,9.219297108518687,108.17148120546057
+36,99,"Pollard, Mccarty and Eaton",French Polynesia,ellipse,30,252,12.038943237114323,101.97296157296287
+37,46,"Black, Davis and Coleman",El Salvador,round-rectangle,90,115,13.120432540763494,96.23548252188017
+37,57,"Black, Davis and Coleman",El Salvador,round-rectangle,100,203,17.33135717550264,118.77491691542956
+37,58,"Black, Davis and Coleman",El Salvador,round-rectangle,44.5,57,17.241989395033926,102.49672316024835
+37,64,"Black, Davis and Coleman",El Salvador,round-rectangle,100,177,6.409903588454062,106.08741935623382
+37,65,"Black, Davis and Coleman",El Salvador,round-rectangle,90,274,9.240456782861024,98.75322242987713
+37,82,"Black, Davis and Coleman",El Salvador,round-rectangle,30,24,11.683213379557515,108.91819735259742
+38,40,"Diaz, Benson and Castillo",Saint Lucia,rectangle,30,57,17.035249446293136,109.35362156423146
+38,43,"Diaz, Benson and Castillo",Saint Lucia,rectangle,60,50,17.84187844743522,108.63031195573843
+38,46,"Diaz, Benson and Castillo",Saint Lucia,rectangle,20,99,16.71236409158601,105.94687669607113
+38,58,"Diaz, Benson and Castillo",Saint Lucia,rectangle,30,72,17.016306793064793,92.18467356961531
+38,90,"Diaz, Benson and Castillo",Saint Lucia,rectangle,20,158,13.427984991783685,81.55956560376501
+38,98,"Diaz, Benson and Castillo",Saint Lucia,rectangle,90,121,16.91190998986968,89.56682717985542
+39,43,"Reid, Gill and Perez",Fiji,round-rectangle,50,104,11.002007415286835,101.16510498469317
+39,59,"Reid, Gill and Perez",Fiji,round-rectangle,100,187,16.667628719912514,87.28840511281948
+39,60,"Reid, Gill and Perez",Fiji,round-rectangle,50,216,13.216990972939236,100.1368735430387
+39,71,"Reid, Gill and Perez",Fiji,round-rectangle,60,80,19.66058533549836,86.19914777794885
+39,74,"Reid, Gill and Perez",Fiji,round-rectangle,60,208,15.282240011765102,91.29410342995213
+39,84,"Reid, Gill and Perez",Fiji,round-rectangle,60,211,15.012649364693631,112.21512214945231
+39,86,"Reid, Gill and Perez",Fiji,round-rectangle,20,162,16.521554510279678,97.22018310680572
+40,41,"Lam, Quinn and Hughes",Saint Vincent and the Grenadines,ellipse,20,288,24.583053160434897,114.24811751739728
+40,45,"Lam, Quinn and Hughes",Saint Vincent and the Grenadines,ellipse,60,99,20.302388496288103,91.74127954895732
+40,52,"Lam, Quinn and Hughes",Saint Vincent and the Grenadines,ellipse,20,103,8.990520228517353,100.5319128204918
+40,53,"Lam, Quinn and Hughes",Saint Vincent and the Grenadines,ellipse,90,122,3.9782050440064545,84.75551409156817
+40,57,"Lam, Quinn and Hughes",Saint Vincent and the Grenadines,ellipse,30,203,8.811933741336837,94.39317893800286
+40,59,"Lam, Quinn and Hughes",Saint Vincent and the Grenadines,ellipse,40,65,12.001621582113287,84.41205582373969
+40,81,"Lam, Quinn and Hughes",Saint Vincent and the Grenadines,ellipse,74.1,108,12.554120814982586,93.15566308800804
+40,86,"Lam, Quinn and Hughes",Saint Vincent and the Grenadines,ellipse,44.5,270,9.479608316646669,105.77323975655659
+40,90,"Lam, Quinn and Hughes",Saint Vincent and the Grenadines,ellipse,74.1,121,12.146921248270921,105.00080367827825
+40,92,"Lam, Quinn and Hughes",Saint Vincent and the Grenadines,ellipse,90,126,16.58245052100276,83.99477896957251
+40,93,"Lam, Quinn and Hughes",Saint Vincent and the Grenadines,ellipse,90,206,9.853166725249764,109.50258696306199
+40,99,"Lam, Quinn and Hughes",Saint Vincent and the Grenadines,ellipse,100,221,16.751868328939793,107.09939093573936
+41,54,"Diaz, Gonzalez and Elliott",Lithuania,round-rectangle,20,126,18.16849844177805,93.54333998916698
+41,68,"Diaz, Gonzalez and Elliott",Lithuania,round-rectangle,40,186,18.463265505052064,101.2511541064698
+41,73,"Diaz, Gonzalez and Elliott",Lithuania,round-rectangle,80,10,28.141267921140198,104.8471505706082
+41,90,"Diaz, Gonzalez and Elliott",Lithuania,round-rectangle,40,94,12.575503720708891,93.91921341373914
+41,95,"Diaz, Gonzalez and Elliott",Lithuania,round-rectangle,30,245,17.85283729747073,100.15442103976763
+41,98,"Diaz, Gonzalez and Elliott",Lithuania,round-rectangle,80,261,11.845428757969367,101.44690733799246
+42,44,Rose Group,Russian Federation,rectangle,40,256,12.561277276133293,96.4356393347912
+42,53,Rose Group,Russian Federation,rectangle,90,69,14.219599237206072,107.64292823667654
+42,59,Rose Group,Russian Federation,rectangle,40,140,14.675691728711193,89.5140074432381
+42,86,Rose Group,Russian Federation,rectangle,80,20,12.952787612354498,106.07084480876993
+42,88,Rose Group,Russian Federation,rectangle,90,232,16.91552535912472,92.85103682917023
+42,94,Rose Group,Russian Federation,rectangle,74.1,110,9.664983448106076,99.24297481978412
+42,95,Rose Group,Russian Federation,rectangle,60,83,21.717647790023666,104.04149915466324
+43,59,"Evans, Key and Wilson",Finland,ellipse,60,84,13.016200487867716,99.17369200583137
+43,63,"Evans, Key and Wilson",Finland,ellipse,40,119,14.031228346057247,116.01610595803616
+43,66,"Evans, Key and Wilson",Finland,ellipse,50,133,9.218745800300564,93.09784306345516
+43,68,"Evans, Key and Wilson",Finland,ellipse,30,149,15.408652990832103,113.13147820417302
+43,92,"Evans, Key and Wilson",Finland,ellipse,44.5,55,13.863689921317718,87.54025191364498
+43,93,"Evans, Key and Wilson",Finland,ellipse,20,25,19.516515574035015,101.62132351821494
+43,96,"Evans, Key and Wilson",Finland,ellipse,80,142,8.102963725387102,103.86838520010785
+43,97,"Evans, Key and Wilson",Finland,ellipse,74.1,140,17.28280247969427,104.36295152380883
+44,45,Miller LLC,Sao Tome and Principe,rectangle,20,35,16.651389581772076,101.06448222699335
+44,46,Miller LLC,Sao Tome and Principe,rectangle,20,164,17.145495113960195,99.5474649070005
+44,60,Miller LLC,Sao Tome and Principe,rectangle,74.1,112,13.719540245396852,112.30875617539428
+44,80,Miller LLC,Sao Tome and Principe,rectangle,40,185,12.371699038772123,113.16706312485661
+44,90,Miller LLC,Sao Tome and Principe,rectangle,20,82,17.009901469266286,93.08394639233406
+44,97,Miller LLC,Sao Tome and Principe,rectangle,20,126,15.28239345311842,99.16716818749576
+45,48,"Sutton, Cox and Fitzgerald",United States of America,ellipse,30,219,15.9201684861687,106.03471735848356
+45,53,"Sutton, Cox and Fitzgerald",United States of America,ellipse,60,128,10.65127497995519,102.46828312687204
+45,57,"Sutton, Cox and Fitzgerald",United States of America,ellipse,44.5,125,11.566696968804202,80.04543885250268
+45,59,"Sutton, Cox and Fitzgerald",United States of America,ellipse,80,230,2.4875667308984184,105.78098073646548
+45,64,"Sutton, Cox and Fitzgerald",United States of America,ellipse,80,136,23.683211692085138,92.55291716469154
+45,70,"Sutton, Cox and Fitzgerald",United States of America,ellipse,74.1,126,5.144315549398522,102.9917298069456
+45,73,"Sutton, Cox and Fitzgerald",United States of America,ellipse,40,205,17.56825534154069,103.28909945699404
+45,79,"Sutton, Cox and Fitzgerald",United States of America,ellipse,90,269,22.763009164370352,101.73823614512185
+45,80,"Sutton, Cox and Fitzgerald",United States of America,ellipse,30,128,16.7156686255228,71.91003892923655
+45,84,"Sutton, Cox and Fitzgerald",United States of America,ellipse,44.5,249,11.953137483366989,76.8662403089007
+45,87,"Sutton, Cox and Fitzgerald",United States of America,ellipse,50,218,20.80671931617627,101.90834687610408
+45,90,"Sutton, Cox and Fitzgerald",United States of America,ellipse,50,140,14.964165651684786,100.3298323627191
+45,95,"Sutton, Cox and Fitzgerald",United States of America,ellipse,30,56,22.36294333092909,110.33627495923207
+45,96,"Sutton, Cox and Fitzgerald",United States of America,ellipse,74.1,270,13.278793487038051,107.99595307214996
+45,97,"Sutton, Cox and Fitzgerald",United States of America,ellipse,44.5,228,17.72601807773555,102.04576540930935
+45,98,"Sutton, Cox and Fitzgerald",United States of America,ellipse,74.1,46,9.102541436418406,122.90662411007801
+45,99,"Sutton, Cox and Fitzgerald",United States of America,ellipse,90,300,15.546644772181835,110.32801890777998
+46,49,"Johnson, Moore and Le",Montenegro,round-rectangle,80,299,16.58016394132026,100.84838647573379
+46,52,"Johnson, Moore and Le",Montenegro,round-rectangle,20,246,20.959403886222542,89.88188935719808
+46,53,"Johnson, Moore and Le",Montenegro,round-rectangle,30,96,18.50374333285154,92.93677349619136
+46,54,"Johnson, Moore and Le",Montenegro,round-rectangle,100,131,11.837134693828462,101.32774182600163
+46,58,"Johnson, Moore and Le",Montenegro,round-rectangle,40,74,19.80377085300057,86.32301092165909
+46,59,"Johnson, Moore and Le",Montenegro,round-rectangle,100,207,14.81525580072389,86.40784927313015
+46,65,"Johnson, Moore and Le",Montenegro,round-rectangle,40,92,16.414750713966964,88.68118138900874
+46,86,"Johnson, Moore and Le",Montenegro,round-rectangle,60,284,9.237037947398829,94.48914291144104
+46,92,"Johnson, Moore and Le",Montenegro,round-rectangle,74.1,10,11.165048847205206,87.86145350969774
+46,95,"Johnson, Moore and Le",Montenegro,round-rectangle,74.1,57,14.432344753387646,95.03275226845943
+47,56,Harrison-Lam,Martinique,rectangle,50,3,17.7670262773818,103.3517846254915
+47,66,Harrison-Lam,Martinique,rectangle,50,21,20.068932036824528,97.9039006780259
+47,69,Harrison-Lam,Martinique,rectangle,74.1,174,5.599732504141549,107.38045478341357
+47,89,Harrison-Lam,Martinique,rectangle,20,34,19.859243008988546,104.30477519378486
+47,94,Harrison-Lam,Martinique,rectangle,90,91,15.506761418425972,118.9990045151826
+47,96,Harrison-Lam,Martinique,rectangle,40,263,18.286118462378585,99.70056189906136
+48,79,"Caldwell, Clark and Taylor",Tanzania,round-rectangle,60,205,16.888810912619828,101.6232069919828
+48,81,"Caldwell, Clark and Taylor",Tanzania,round-rectangle,100,36,18.09559701650032,103.30752302599686
+48,83,"Caldwell, Clark and Taylor",Tanzania,round-rectangle,44.5,245,10.122250423782415,90.66357997109859
+48,85,"Caldwell, Clark and Taylor",Tanzania,round-rectangle,44.5,100,14.728716637174319,88.90353741271096
+48,86,"Caldwell, Clark and Taylor",Tanzania,round-rectangle,90,259,17.652352180172116,104.74438059059202
+48,88,"Caldwell, Clark and Taylor",Tanzania,round-rectangle,44.5,262,9.337572498039478,124.68857494694653
+48,89,"Caldwell, Clark and Taylor",Tanzania,round-rectangle,20,26,17.119190526356416,119.79686201716477
+48,96,"Caldwell, Clark and Taylor",Tanzania,round-rectangle,20,122,15.604364880203887,85.63822423685
+48,97,"Caldwell, Clark and Taylor",Tanzania,round-rectangle,74.1,78,11.264330202005105,95.89931314123953
+49,71,"Vasquez, Campbell and Thomas",Cape Verde,round-rectangle,100,200,9.814119930161732,102.50505514141999
+49,76,"Vasquez, Campbell and Thomas",Cape Verde,round-rectangle,100,51,13.143119704570458,102.77841604711607
+49,81,"Vasquez, Campbell and Thomas",Cape Verde,round-rectangle,80,2,7.974009941514169,108.11264701717954
+49,90,"Vasquez, Campbell and Thomas",Cape Verde,round-rectangle,20,284,17.23337272657526,97.74462416991288
+49,96,"Vasquez, Campbell and Thomas",Cape Verde,round-rectangle,90,235,11.24377655614914,100.9853921973636
+50,59,"Bennett, Davis and Robles",Netherlands Antilles,ellipse,50,204,0.946994755201132,80.8311765318897
+50,67,"Bennett, Davis and Robles",Netherlands Antilles,ellipse,100,61,20.621554281388168,93.2670711446973
+50,68,"Bennett, Davis and Robles",Netherlands Antilles,ellipse,60,10,18.97464474085603,92.67699206305944
+50,72,"Bennett, Davis and Robles",Netherlands Antilles,ellipse,80,263,13.770336828330151,75.87540567145926
+50,91,"Bennett, Davis and Robles",Netherlands Antilles,ellipse,50,265,19.129655432452232,100.39517106057721
+50,95,"Bennett, Davis and Robles",Netherlands Antilles,ellipse,60,128,12.926088208682348,85.53280829148713
+51,53,Freeman-Williams,Ireland,ellipse,74.1,116,17.77165665715864,94.91635484424154
+51,59,Freeman-Williams,Ireland,ellipse,80,247,13.226236158961163,98.42254814353751
+51,64,Freeman-Williams,Ireland,ellipse,44.5,154,14.704877999086865,85.01748826598526
+51,68,Freeman-Williams,Ireland,ellipse,50,279,7.921180485669788,110.7016285100883
+51,71,Freeman-Williams,Ireland,ellipse,90,153,14.174981269331482,100.73220235125477
+51,78,Freeman-Williams,Ireland,ellipse,100,171,19.31170862990824,106.51611078537871
+51,80,Freeman-Williams,Ireland,ellipse,90,200,15.047867678508133,94.50502392768396
+51,82,Freeman-Williams,Ireland,ellipse,60,56,16.569030989437746,97.33253310585688
+51,95,Freeman-Williams,Ireland,ellipse,74.1,126,10.111804558307046,101.80196376225501
+51,99,Freeman-Williams,Ireland,ellipse,44.5,43,7.491767902978341,115.25794786800057
+52,60,Smith-Owen,Benin,ellipse,30,213,23.440432757007347,115.10518609701612
+52,62,Smith-Owen,Benin,ellipse,30,208,19.696780840681406,91.77347017097725
+52,69,Smith-Owen,Benin,ellipse,80,62,23.18455771093843,94.61279927474452
+52,82,Smith-Owen,Benin,ellipse,90,204,4.690632222262556,94.4889702826394
+52,84,Smith-Owen,Benin,ellipse,60,30,6.45661878957597,94.23541058583339
+52,88,Smith-Owen,Benin,ellipse,90,114,25.077344513895497,116.98662424760677
+52,99,Smith-Owen,Benin,ellipse,50,67,13.537078038688245,99.36523567623948
+53,57,"Woods, Porter and Martinez",Niger,rectangle,40,35,17.413361567904328,103.47112501235912
+53,62,"Woods, Porter and Martinez",Niger,rectangle,90,202,13.746827338512777,121.08314197344825
+53,70,"Woods, Porter and Martinez",Niger,rectangle,40,179,11.702393216733485,96.53517899102326
+53,71,"Woods, Porter and Martinez",Niger,rectangle,20,215,13.31688803286607,112.7164413891908
+53,79,"Woods, Porter and Martinez",Niger,rectangle,60,299,18.3268695009118,89.48691935118306
+53,87,"Woods, Porter and Martinez",Niger,rectangle,40,245,15.245257891963034,101.81335430783157
+53,92,"Woods, Porter and Martinez",Niger,rectangle,90,29,4.260295149154738,102.41074905060705
+54,66,Miles-Webster,Lao People's Democratic Republic,ellipse,74.1,42,19.208013902575853,95.93152483400638
+54,67,Miles-Webster,Lao People's Democratic Republic,ellipse,90,234,16.83553486847014,103.24887531366745
+54,68,Miles-Webster,Lao People's Democratic Republic,ellipse,100,263,16.08475982630875,106.10498507800305
+54,76,Miles-Webster,Lao People's Democratic Republic,ellipse,60,92,14.248939321736072,79.77880005898561
+54,97,Miles-Webster,Lao People's Democratic Republic,ellipse,80,52,18.706406194108844,96.80542582654078
+55,56,Ramirez Inc,Mauritania,round-rectangle,74.1,79,19.61179495502201,106.61929661884102
+55,59,Ramirez Inc,Mauritania,round-rectangle,50,110,16.480845335653996,96.36532282713841
+55,66,Ramirez Inc,Mauritania,round-rectangle,90,278,15.866268731453413,78.67746418815653
+55,74,Ramirez Inc,Mauritania,round-rectangle,80,295,9.937579885041686,89.13614530588568
+55,86,Ramirez Inc,Mauritania,round-rectangle,20,109,16.057633563750567,99.88043054367958
+55,90,Ramirez Inc,Mauritania,round-rectangle,30,13,14.581790391975513,93.84229481457935
+56,58,Lam Inc,Aruba,ellipse,74.1,261,16.579188017118867,107.36466362907396
+56,67,Lam Inc,Aruba,ellipse,50,208,11.614715206431185,110.27265366086306
+56,71,Lam Inc,Aruba,ellipse,20,192,11.045110968789743,96.50210772965633
+56,75,Lam Inc,Aruba,ellipse,44.5,62,21.29293286452043,105.20174100817566
+56,80,Lam Inc,Aruba,ellipse,20,197,18.298493241820932,98.86846676691574
+56,81,Lam Inc,Aruba,ellipse,90,126,20.33798496433115,95.93716583627295
+56,86,Lam Inc,Aruba,ellipse,20,116,22.21773658118349,103.27527653778657
+56,88,Lam Inc,Aruba,ellipse,20,214,9.332510735099042,91.51619032689345
+56,89,Lam Inc,Aruba,ellipse,30,37,21.69789820503631,115.09566422957312
+57,58,Valdez-Davis,Antarctica (the territory South of 60 deg S),rectangle,74.1,83,6.838276341846905,108.26548662571226
+57,72,Valdez-Davis,Antarctica (the territory South of 60 deg S),rectangle,100,111,17.757661679138323,100.56572015216854
+57,80,Valdez-Davis,Antarctica (the territory South of 60 deg S),rectangle,60,41,16.50707517761052,93.87449966806157
+57,81,Valdez-Davis,Antarctica (the territory South of 60 deg S),rectangle,40,22,11.275201698929283,104.85349603670025
+58,62,Lewis-Bryant,Hungary,ellipse,90,118,12.214868111615436,100.25732547621902
+58,63,Lewis-Bryant,Hungary,ellipse,30,244,16.41357102251627,127.14031871675908
+58,67,Lewis-Bryant,Hungary,ellipse,60,297,13.014604035529215,94.23644685422165
+58,72,Lewis-Bryant,Hungary,ellipse,44.5,31,27.95870385898563,92.14334607296972
+58,86,Lewis-Bryant,Hungary,ellipse,44.5,263,15.564164070525058,104.2213856024875
+59,63,"Barnes, Dunn and Jensen",Lesotho,rectangle,80,188,19.863597524154777,96.50967570072471
+59,68,"Barnes, Dunn and Jensen",Lesotho,rectangle,80,157,6.734725683533627,99.01096322817007
+59,70,"Barnes, Dunn and Jensen",Lesotho,rectangle,40,78,16.96723413584592,96.78808193813873
+59,95,"Barnes, Dunn and Jensen",Lesotho,rectangle,100,67,23.497417918312646,98.94490992372141
+60,61,Martinez PLC,Nepal,rectangle,60,238,21.09066004046666,89.20629035923878
+60,63,Martinez PLC,Nepal,rectangle,50,237,18.018445971716815,105.13529011956675
+60,65,Martinez PLC,Nepal,rectangle,80,85,16.230898887496842,91.20737886518461
+60,70,Martinez PLC,Nepal,rectangle,90,250,10.984100119948767,93.58458100076285
+60,80,Martinez PLC,Nepal,rectangle,90,278,11.489890912419519,107.04321192209078
+60,81,Martinez PLC,Nepal,rectangle,100,245,18.239718366762805,97.99047360611067
+60,89,Martinez PLC,Nepal,rectangle,80,93,14.763601535824064,98.63449926260651
+60,95,Martinez PLC,Nepal,rectangle,30,39,13.589330373022515,104.69891465691562
+61,65,Clark-Carpenter,Nigeria,round-rectangle,74.1,178,12.224720290857313,109.52565942286857
+61,70,Clark-Carpenter,Nigeria,round-rectangle,80,106,9.982713043189415,105.37451850753116
+61,72,Clark-Carpenter,Nigeria,round-rectangle,80,250,13.830531102588843,104.09901547904339
+61,74,Clark-Carpenter,Nigeria,round-rectangle,44.5,40,23.701480195032815,104.00886400154108
+61,76,Clark-Carpenter,Nigeria,round-rectangle,44.5,175,12.281964567533047,117.38614543580088
+61,93,Clark-Carpenter,Nigeria,round-rectangle,50,281,9.8481739208409,103.2049074708631
+61,94,Clark-Carpenter,Nigeria,round-rectangle,74.1,188,21.427531054631118,114.41380732256738
+61,99,Clark-Carpenter,Nigeria,round-rectangle,100,129,8.131173003264406,98.2443470713039
+62,64,"Edwards, Kaiser and Gardner",Mayotte,ellipse,100,170,19.40993919241582,88.41109715205278
+62,76,"Edwards, Kaiser and Gardner",Mayotte,ellipse,100,251,18.655011695578192,98.00622702251117
+62,80,"Edwards, Kaiser and Gardner",Mayotte,ellipse,20,255,9.557472452323339,105.89017998386339
+62,93,"Edwards, Kaiser and Gardner",Mayotte,ellipse,60,214,11.002171695327535,96.5206446332601
+62,96,"Edwards, Kaiser and Gardner",Mayotte,ellipse,100,163,11.930010771932897,97.77921679058424
+62,97,"Edwards, Kaiser and Gardner",Mayotte,ellipse,90,194,12.460134549537113,101.96636423367457
+63,71,"Lowe, Sullivan and Chase",Kiribati,rectangle,60,167,8.47171526652167,103.51327037344973
+63,74,"Lowe, Sullivan and Chase",Kiribati,rectangle,50,250,11.92498634395891,82.86699362490094
+63,79,"Lowe, Sullivan and Chase",Kiribati,rectangle,74.1,61,19.13600969333689,115.95629007030098
+63,80,"Lowe, Sullivan and Chase",Kiribati,rectangle,44.5,33,14.295840813225821,98.19707120761208
+63,85,"Lowe, Sullivan and Chase",Kiribati,rectangle,74.1,50,26.769855848957363,102.71513192198103
+63,87,"Lowe, Sullivan and Chase",Kiribati,rectangle,44.5,34,16.551347975986268,102.48541747360036
+63,88,"Lowe, Sullivan and Chase",Kiribati,rectangle,50,28,13.779122347600477,90.56292349606203
+63,90,"Lowe, Sullivan and Chase",Kiribati,rectangle,44.5,267,13.046457188746126,112.64961252578927
+63,92,"Lowe, Sullivan and Chase",Kiribati,rectangle,80,45,10.964163159858696,95.38155878341806
+63,95,"Lowe, Sullivan and Chase",Kiribati,rectangle,50,142,18.07850117805485,87.10527832294943
+63,96,"Lowe, Sullivan and Chase",Kiribati,rectangle,20,118,12.172411387166612,99.5757241839701
+64,67,Allen Ltd,Belgium,rectangle,44.5,19,16.409786069017386,114.79208239549301
+64,69,Allen Ltd,Belgium,rectangle,20,209,23.183460551426826,104.11948857819182
+64,74,Allen Ltd,Belgium,rectangle,20,41,21.658285500978113,96.45474980584599
+64,75,Allen Ltd,Belgium,rectangle,74.1,271,13.023686331412637,114.43317061998465
+64,82,Allen Ltd,Belgium,rectangle,80,181,9.816923862287581,113.93723610654607
+64,89,Allen Ltd,Belgium,rectangle,90,77,10.318609666185477,114.94542851793679
+64,90,Allen Ltd,Belgium,rectangle,100,69,12.1618363289907,93.32705529841901
+64,98,Allen Ltd,Belgium,rectangle,30,129,16.6590714361355,120.70321828347348
+65,78,Goodwin-Sandoval,Gambia,round-rectangle,60,158,15.636235641204436,99.61442142859131
+65,79,Goodwin-Sandoval,Gambia,round-rectangle,40,265,14.515169509962613,115.23033719793212
+65,97,Goodwin-Sandoval,Gambia,round-rectangle,100,299,15.587873109855687,94.68377268086023
+66,71,Hill-Mathis,Italy,round-rectangle,40,231,8.921512082778964,88.32961968639545
+66,81,Hill-Mathis,Italy,round-rectangle,40,142,15.448562344866636,104.83109885988749
+66,85,Hill-Mathis,Italy,round-rectangle,80,215,24.947758696608936,103.95284558421106
+66,96,Hill-Mathis,Italy,round-rectangle,30,114,18.704441334202503,104.2403601238282
+66,97,Hill-Mathis,Italy,round-rectangle,50,59,10.875182247458504,105.69405664611219
+67,68,"Lee, Davies and Lee",Papua New Guinea,round-rectangle,20,291,12.519848127375333,103.57511965257275
+67,89,"Lee, Davies and Lee",Papua New Guinea,round-rectangle,44.5,246,3.8284228011753907,103.84195306042297
+68,73,"Johnson, Thompson and Sloan",French Polynesia,ellipse,90,211,12.330905843287315,105.69399367247856
+68,89,"Johnson, Thompson and Sloan",French Polynesia,ellipse,90,146,9.467733351001094,98.29275311033469
+68,91,"Johnson, Thompson and Sloan",French Polynesia,ellipse,40,249,18.789577114487024,90.87763115354238
+69,79,Kramer Inc,Djibouti,rectangle,44.5,264,18.88189296425265,91.89076452708272
+69,82,Kramer Inc,Djibouti,rectangle,60,109,18.42894796167986,116.95288460385974
+69,91,Kramer Inc,Djibouti,rectangle,40,181,13.981356282235636,92.5982203349279
+69,93,Kramer Inc,Djibouti,rectangle,80,53,24.868366459456837,121.58152539671973
+69,95,Kramer Inc,Djibouti,rectangle,30,145,9.4502626529306,88.09616285643617
+70,90,Dixon Inc,Morocco,rectangle,50,9,14.914889871916474,107.58274390787754
+70,94,Dixon Inc,Morocco,rectangle,20,61,14.056524021781103,99.91563368585125
+70,95,Dixon Inc,Morocco,rectangle,60,232,18.849946648632432,108.75238000644914
+71,80,"Hall, Willis and Smith",Gambia,ellipse,90,107,22.56676953999909,110.00654434096695
+71,81,"Hall, Willis and Smith",Gambia,ellipse,90,95,17.57339978610629,103.25963564374666
+71,85,"Hall, Willis and Smith",Gambia,ellipse,40,288,19.161853739594605,97.9561286428983
+71,87,"Hall, Willis and Smith",Gambia,ellipse,60,220,12.445024822911924,124.46416309454199
+71,93,"Hall, Willis and Smith",Gambia,ellipse,44.5,20,21.61421224599407,99.73603047251137
+72,78,"Olson, Davis and Welch",Congo,round-rectangle,100,231,17.248974008062497,96.11047171439199
+72,83,"Olson, Davis and Welch",Congo,round-rectangle,74.1,252,25.240635184982864,100.05326644777104
+72,85,"Olson, Davis and Welch",Congo,round-rectangle,30,136,19.20296703063478,104.9633651534491
+72,93,"Olson, Davis and Welch",Congo,round-rectangle,80,124,20.046648049355994,96.24260471913607
+72,98,"Olson, Davis and Welch",Congo,round-rectangle,60,255,10.396575128448344,94.15341071644768
+73,76,"Harris, Glass and Watts",Algeria,round-rectangle,80,87,34.62189479129498,104.42451674023214
+73,79,"Harris, Glass and Watts",Algeria,round-rectangle,40,297,20.473948285324227,109.75206059812075
+73,89,"Harris, Glass and Watts",Algeria,round-rectangle,90,233,17.623149614047904,90.07981927164413
+73,91,"Harris, Glass and Watts",Algeria,round-rectangle,50,222,13.774443085002044,94.69119983936083
+73,98,"Harris, Glass and Watts",Algeria,round-rectangle,100,231,15.517971355290024,102.59798008545522
+74,81,"Diaz, Chen and Cardenas",Nauru,ellipse,40,62,19.355334037404553,95.22554832227235
+74,94,"Diaz, Chen and Cardenas",Nauru,ellipse,40,29,12.092366354757946,96.90969104153484
+74,95,"Diaz, Chen and Cardenas",Nauru,ellipse,100,197,21.262587274017605,107.44651481645022
+74,98,"Diaz, Chen and Cardenas",Nauru,ellipse,20,144,22.593667059314576,94.87447941192774
+75,76,"Allen, Davila and Wu",Panama,rectangle,74.1,87,19.842016360126294,108.07046608585219
+75,85,"Allen, Davila and Wu",Panama,rectangle,100,89,10.438213346366753,116.89286919634907
+76,77,"Davis, Mack and Sullivan",United States of America,round-rectangle,50,184,11.100344650256604,92.60047242226136
+76,88,"Davis, Mack and Sullivan",United States of America,round-rectangle,44.5,264,16.583704702527793,103.37372426649351
+77,85,"Jackson, Rocha and Baker",Czech Republic,ellipse,50,35,21.186165755930393,91.97752557015318
+77,91,"Jackson, Rocha and Baker",Czech Republic,ellipse,50,141,14.998027509604846,87.47578530047481
+77,98,"Jackson, Rocha and Baker",Czech Republic,ellipse,20,297,21.40487354234005,102.89489609764007
+78,85,Allen-Moore,Portugal,ellipse,90,271,18.06544572628459,120.90323174133243
+78,89,Allen-Moore,Portugal,ellipse,20,47,10.84091943723476,103.92313555984683
+78,99,Allen-Moore,Portugal,ellipse,80,29,14.698763399317682,113.53190048892516
+79,81,Butler-Strong,Kuwait,round-rectangle,74.1,200,12.308082362814115,107.94603203335441
+79,82,Butler-Strong,Kuwait,round-rectangle,50,298,8.493675268435759,110.01603998442985
+79,84,Butler-Strong,Kuwait,round-rectangle,80,116,15.592290002273765,89.34460169510594
+79,87,Butler-Strong,Kuwait,round-rectangle,74.1,184,20.118114626400992,99.41187018095445
+79,88,Butler-Strong,Kuwait,round-rectangle,30,102,16.210687419024932,84.43224000087005
+79,90,Butler-Strong,Kuwait,round-rectangle,80,10,15.860352678034523,114.04798528949148
+80,87,Hernandez and Sons,Turkmenistan,ellipse,40,282,9.049640583962317,100.13117075385146
+81,83,Johnson Group,Japan,round-rectangle,44.5,200,10.15892445441206,86.19117634768511
+81,91,Johnson Group,Japan,round-rectangle,100,249,18.959338213054945,90.24171481535423
+81,92,Johnson Group,Japan,round-rectangle,40,83,17.124854865202142,84.75709688170073
+81,95,Johnson Group,Japan,round-rectangle,44.5,186,8.578293521512775,97.39521853345009
+82,86,Forbes and Sons,Antarctica (the territory South of 60 deg S),round-rectangle,90,103,22.435783934603517,110.26944517752189
+82,91,Forbes and Sons,Antarctica (the territory South of 60 deg S),round-rectangle,30,197,15.547933690631927,105.18910602149717
+83,85,"King, Moore and Frey",Cape Verde,ellipse,100,213,12.559282385563641,94.86901109468879
+83,86,"King, Moore and Frey",Cape Verde,ellipse,20,194,14.560916016166324,98.19419459625044
+83,89,"King, Moore and Frey",Cape Verde,ellipse,100,101,18.070372122870403,102.25664623419928
+83,91,"King, Moore and Frey",Cape Verde,ellipse,50,112,15.686196454731023,96.53510147609876
+84,99,Wheeler and Sons,Mauritania,round-rectangle,80,2,10.801119762124,89.50415197898793
+85,95,Rivera Ltd,Trinidad and Tobago,rectangle,74.1,60,15.53676247648194,111.35048544955596
+86,91,"Johnston, Allison and Day",Switzerland,ellipse,20,168,9.505425255888582,96.89300752793652
+87,90,Bryant-Glenn,British Virgin Islands,ellipse,100,55,13.204647369491846,102.79124035943639
+88,89,Jones Inc,Belize,ellipse,80,298,14.713327899416955,96.13391832587885
+88,91,Jones Inc,Belize,ellipse,44.5,66,10.91293952700967,108.34697624314998
+88,94,Jones Inc,Belize,ellipse,90,85,16.26725875213733,102.1022785517608
+89,99,"Rios, Anderson and Williams",Congo,ellipse,50,222,14.00572077742533,100.22643067216521
+91,93,Lee-Douglas,Mexico,ellipse,90,209,9.607933028120225,110.42371400670577
+91,96,Lee-Douglas,Mexico,ellipse,80,291,21.393638330962137,99.50071119890606
+92,95,"Baker, Martinez and Young",Kazakhstan,ellipse,30,142,17.902504287354475,79.46655228939917
+92,96,"Baker, Martinez and Young",Kazakhstan,ellipse,50,233,10.743175181654,111.75584573850203
+93,94,"Ho, Kim and Benjamin",Hungary,rectangle,40,241,13.063307841237453,93.48080148856238
+94,96,Diaz-Ellis,Antarctica (the territory South of 60 deg S),rectangle,30,55,15.234817040174036,107.39545200938836
+94,98,Diaz-Ellis,Antarctica (the territory South of 60 deg S),rectangle,50,156,14.68620572344295,96.12195359062933
+94,99,Diaz-Ellis,Antarctica (the territory South of 60 deg S),rectangle,74.1,202,9.728316263221894,74.79903785103684
+97,98,Bush-Chavez,Niue,ellipse,50,80,15.313927209408453,98.6565742033589
+90,,"Phelps, Lewis and Murphy",Finland,rectangle,90,206,19.32221278373012,111.30073605819055
+95,,Green-Chapman,Jordan,ellipse,44.5,59,12.04103152303847,115.25380882242183
+96,,"Coleman, Hernandez and Bennett",Dominica,round-rectangle,90,71,19.926583774002644,108.2733067356343
+98,,"Williamson, King and Duarte",Lithuania,round-rectangle,90,71,24.038074690545784,92.96608479779005
+99,,Johnson-Pham,Isle of Man,round-rectangle,100,79,9.212319584231473,98.04630337950009

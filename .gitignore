@@ -143,3 +143,6 @@ fabric.properties
 
 /dist
 /.tmp
+/yFiles/
+/webpack.statistics.dev.html
+.DS_Store
