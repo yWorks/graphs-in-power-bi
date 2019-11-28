@@ -206,7 +206,7 @@ In the data folder of the repo you can find a Python notebook which allows you t
 
 Of course, all generated random data is fictitious and any correspondence is accidental.
 
-![](./docs/Generator.png)
+![](./docs/DataGenerator.png)
 
 ## Feedback
 
