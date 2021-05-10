@@ -16,7 +16,7 @@
     "@types/d3": "5.7.2",
     "core-js": "3.2.1",
     "d3": "5.10.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "powerbi-visuals-api": "~2.6.1",
     "powerbi-visuals-utils-dataviewutils": "^2.2.1",
     "yfiles": "./yFiles/lib/es-modules"
