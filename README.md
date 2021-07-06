@@ -172,7 +172,7 @@ A typical output looks like the following
 
 NOTE:
 
-It can take up to **40 minutes** to compile a widget.
+Depending on your system, it can take **up to hours** to compile a widget. Should the process fail with an obscure out of memory failure, make sure to provide more memory for your node process, e.g. via environment variables `NODE_OPTIONS=--max-old-space-size=4096`. Unfortunately the tool-chains used are extremely memory hungry.
 
 ## yFiles Dependency and License
 
