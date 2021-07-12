@@ -137,7 +137,7 @@ The tool is crucial for the development of a Power BI widget. It can be installe
 
 	npm i -g powerbi-visuals-tools
 
-as a global package. The slightly more challenging part is that you also need to install a localhost certificate to make it work. More info can be found as part of this tutorial.
+as a global package. The slightly more challenging part is that you also need to install a localhost certificate to make it work. More info can be found as part of [this tutorial](https://docs.microsoft.com/en-us/power-bi/developer/visuals/environment-setup).
 Setting up the certificate is necessary to allow an SSL communication between the localhost serving the custom visual and the online version of Power BI. It's important to emphasize also that
 One cannot test and develop a widget with the desktop version.
 The certificate is also a necessary requirement to compile the widget to a standalone package, as described below.
