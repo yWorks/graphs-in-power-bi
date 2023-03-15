@@ -1,9 +1,9 @@
-import 'core-js/stable';
-import './../style/yfiles.css';
-import './../style/visual.less';
-import lic from '../yfiles/lib/license.json';
-import powerbi from 'powerbi-visuals-api';
-import {LayoutDirection, NetworkLayoutStyle, VisualSettings} from './settings';
+import powerbi from "powerbi-visuals-api";
+import {FormattingSettingsService} from "powerbi-visuals-utils-formattingmodel";
+import "./../style/visual.less";
+
+import {NetworkLayoutStyle, VisualFormattingSettingsModel} from "./settings";
+import licenseJson from "../yFiles/license.json";
 import {
     Arrow,
     ArrowType,
@@ -12,7 +12,7 @@ import {
     DefaultGraph,
     DefaultLabelStyle,
     EdgeSegmentLabelModel,
-    EdgeSides,
+    EdgeSides, Fill,
     FilteredGraphWrapper,
     GraphComponent,
     GraphItemTypes,
@@ -20,17 +20,17 @@ import {
     GraphViewerInputMode,
     HierarchicLayout,
     HierarchicLayoutData,
-    IGraph,
+    IGraph, ILayoutAlgorithm,
     INode,
     InteriorLabelModel,
     LayoutExecutor,
     LayoutOrientation,
-    License,
+    License, OrganicEdgeRouter,
     OrganicLayout,
     OrganicLayoutData,
     Point,
     PolylineEdgeStyle,
-    Rect,
+    Rect, SequentialLayout,
     ShapeNodeShape,
     ShapeNodeStyle,
     Size,
@@ -39,63 +39,105 @@ import {
     TextRenderSupport,
     TreeLayout,
     TreeLayoutData
-} from 'yfiles';
-import * as _ from 'lodash';
-
-import {NeighborType} from './neighborType';
-import {INodeSourceItem} from './INodeSourceItem';
-import {IEdgeSourceItem} from './IEdgeSourceItem';
+} from "yfiles";
+import {INodeSourceItem} from "./INodeSourceItem";
+import {IEdgeSourceItem} from "./IEdgeSourceItem";
+import {edgeLabelModel, edgeLabelStyle, edgeStyle, nodeLabelStyle, shapeStyle} from "./styling";
 import VisualConstructorOptions = powerbi.extensibility.visual.VisualConstructorOptions;
 import VisualUpdateOptions = powerbi.extensibility.visual.VisualUpdateOptions;
 import IVisual = powerbi.extensibility.visual.IVisual;
-import ISelectionIdBuilder = powerbi.extensibility.ISelectionIdBuilder;
 import ISelectionManager = powerbi.extensibility.ISelectionManager;
-import EnumerateVisualObjectInstancesOptions = powerbi.EnumerateVisualObjectInstancesOptions;
-import VisualObjectInstance = powerbi.VisualObjectInstance;
-import DataView = powerbi.DataView;
-import VisualObjectInstanceEnumerationObject = powerbi.VisualObjectInstanceEnumerationObject;
+import ISelectionIdBuilder = powerbi.extensibility.ISelectionIdBuilder;
+import {NeighborType} from "./neighborType";
+import DataViewValueColumn = powerbi.DataViewValueColumn;
+import DataViewCategoryColumn = powerbi.DataViewCategoryColumn;
+import DataViewCategorical = powerbi.DataViewCategorical;
 
-
-// We need to load the view-layout-bridge module explicitly to prevent the webpack tree shaker from removing this dependency.
-Class.ensure(LayoutExecutor);
-function debug(msg){
+function debug(msg) {
     // just comment out if you wish to hide the logging
     // console.log(msg);
 }
-/**
- * The custom Power BI visual.
- */
+
+const zip = (a, b) => a.map((k, i) => [k, b[i]]);
+const unique = ar => [...new Set(ar)];
+const range = (n) => [...Array(n).keys()];
+const isNil = (x) => x == null;
+const remove = (ar, predicate) => {
+    ar = ar.filter(x => !predicate(x))
+    return ar;
+}
+const min = (ar) => Math.min(...ar);
+const cloneArray = (ar) => ar.map(item => Object.assign({}, item));
+Class.ensure(LayoutExecutor);
+
 export class Visual implements IVisual {
+
+    //region Fields
     /**
-     * The HTML element given by PowerBI under which the visual is created.
+     * Root widget host element in which the diagram is placed.
+     * @type {HTMLElement}
      */
     private hostElement: HTMLElement;
-    /**
-     * The strongly typed settings mapped from the capabilities.
-     */
-    private settings: VisualSettings;
     /**
      * The yFiles component.
      */
     private graphComponent: GraphComponent;
     /**
-     * The yFiles graph.
+     * The settings at design-time.
+     * Part of the PowerBI framework.
+     * @type {VisualFormattingSettingsModel}
      */
-    private graph: IGraph;
+    private formattingSettings: VisualFormattingSettingsModel;
     /**
-     * Root of the datasets. We use only catagorical data for the network creation.
+     * The settings service.
+     * Part of the PowerBI framework.
+     * @type {FormattingSettingsService}
      */
-    private data: powerbi.DataView;
+    private formattingSettingsService: FormattingSettingsService;
+    /**
+     * Enables cross-widget selection.
+     */
+    private selectionIdBuilder: ISelectionIdBuilder;
+
+    /**
+     * Part of the PBI mechanics to highlight selections.
+     */
+    private selectionManager: ISelectionManager;
+    private graph: IGraph;
     /**
      * The mapping from feature name to field names.
      * That is, from the predefined widget features to the dataset field names (if CSV or JSON, the names therein).
      */
     private dataFieldMap: {};
-
     /**
      * The specs of the current highlight.
      */
     private highlights: any[];
+    /**
+     * All the id's, corresponding to the raw column of id's.
+     * One has multiplicity here but this source is needed to find row indices.
+     */
+    private nodeIds: string[];
+
+    /**
+     * The global stroke of all the nodes.
+     */
+    private nodeStroke: Stroke;
+    /**
+     * Cached node data.
+     */
+    private cachedNodeSource: INodeSourceItem[];
+    /**
+     * Debounces the update method.
+     * @type {any}
+     */
+    timestamp = null;
+
+    /**
+     * Cached edge data.
+     */
+    private cachedEdgeSource: IEdgeSourceItem[];
+
     /**
      * The node data defining the graph nodes.
      * The id's are unique in here.
@@ -108,41 +150,14 @@ export class Visual implements IVisual {
     private edgesSource: IEdgeSourceItem[];
 
     /**
-     * All the id's, corresponding to the raw column of id's.
-     * One has multiplicity here but this source is needed to find row indices.
+     * Root of the datasets. We use only categorical data for the network creation.
      */
-    private nodeIds: string[];
-
-    /**
-     * The globarl stroke of all the nodes.
-     */
-    private nodeStroke: Stroke;
-
-    /**
-     * Cached node data.
-     */
-    private cachedNodeSource: INodeSourceItem[];
-
-    /**
-     * Cached edge data.
-     */
-    private cachedEdgeSource: IEdgeSourceItem[];
-
-    /**
-     * Enables cross-widget selection.
-     */
-    private selectionIdBuilder: ISelectionIdBuilder;
-
-    /**
-     * Part of the PBI mechanics to highlight selections.
-     */
-    private selectionManager: ISelectionManager;
+    private data: powerbi.DataView;
 
     /**
      * The visual host given by PBI.
      */
     private host: powerbi.extensibility.visual.IVisualHost;
-
     /**
      * The filtered graph wrapper around the {@link fullGraph}.
      */
@@ -168,101 +183,119 @@ export class Visual implements IVisual {
      */
     private analyzer: GraphStructureAnalyzer;
     private ignoreNeighborhoodSettings: boolean;
+    //endregion
 
+    //region Constructor
+    /**
+     * Instantiates the visual and sets up the diagram component.
+     * The actual construction of the graph happens in the {@link update} method.
+     * @param options
+     */
     constructor(options: VisualConstructorOptions) {
-
-        this.setLicense();
-
-        this.hostElement = options.element;
         this.host = options.host;
-
-        if (_.isNil(document)) {
-            return;
-        }
-
+        this.formattingSettingsService = new FormattingSettingsService();
+        this.hostElement = options.element;
         this.highlights = [];
         this.filteredNodeIds = [];
-
-        this.parseSettings(options);
-
-        this.createGraphComponent();
-
-        this.createSelectionMechanics();
-
+        if (document) {
+            this.setLicense()
+            this.createGraphComponent()
+            this.createSelectionMechanics();
+        }
     }
 
+    //endregion
+
+    //region Methods
     /**
      * Sets the yFiles license.
      */
     setLicense() {
-        License.value = lic;
+        License.value = licenseJson;
     }
 
-    private parseSettings(options) {
-        if (!options
-            || !options.dataViews
-            || !options.dataViews[0]
-        ) {
-            return;
-        }
-        this.settings = Visual.parseSettings(options && options.dataViews && options.dataViews[0]);
+    private createGraphComponent() {
+        const div: HTMLDivElement = document.createElement('div');
 
-    }
+        div.setAttribute('id', 'graphHost');
+        div.style.width = '100%';
+        div.style.height = '100%';
+        this.hostElement.appendChild(div);
+        this.graphComponent = new GraphComponent('#graphHost');
+        this.graphComponent.inputMode = this.setGraphInteractions();
 
-    /**
-     * Defines the interactions with the graph.
-     */
-    private setGraphInteractions() {
-        // this defines a read-only diagram
-        const mode = new GraphViewerInputMode();
-        mode.selectableItems = GraphItemTypes.NODE;
-        mode.selectableItems = GraphItemTypes.NONE;
-        mode.marqueeSelectableItems = GraphItemTypes.NONE;
-        mode.marqueeSelectionInputMode.enabled = false;
-
-        // clicking the canvas disables any highlight, like other PBI widgets
-        mode.addCanvasClickedListener((sender, args) => {
-            this.clearHighlight();
-            // let other widgets know there is nothing selected anymore
-            this.selectionManager.clear();
-            args.handled = true;
-        });
-
-        // clickin a node will highlight it
-        mode.addItemLeftClickedListener((sender, args) => {
-
-            const node = args.item;
-            if (node !== null && INode.isInstance(node)) { // could an edge or a label in principle
-                // clear the previous highlight, if any
-                this.clearHighlight();
-                this.highlightNode(node);
-                // let other widgets know we have a network selection.
-                this.selectionManager.select(node.tag.identity);
-                args.handled = true;
+        this.nodeFilter = (n: INode) => {
+            // we use a filtered graph only for displaying neighborhood views.
+            if ((this.formattingSettings && !this.formattingSettings.neighborhoodSettings.show) || this.ignoreNeighborhoodSettings) {
+                return true;
             }
+
+            return this.filteredNodeIds.includes(n.tag.id);
+        };
+        this.fullGraph = new DefaultGraph();
+        this.filteredGraph = new FilteredGraphWrapper(this.fullGraph, this.nodeFilter, (e) => true);
+        this.graph = this.filteredGraph;
+        this.graphComponent.graph = this.filteredGraph;
+        this.analyzer = new GraphStructureAnalyzer(this.graph);
+
+    }
+
+
+    private setStyle() {
+
+        this.graph.nodeDefaults.size = new Size(80, 50);
+
+        this.graph.nodeDefaults.style = new ShapeNodeStyle({
+            fill: new SolidColorFill(new Color(141, 177, 218)),
+            shape: ShapeNodeShape.RECTANGLE
         });
-        return mode;
+
+        this.nodeStroke = new Stroke({
+            fill: Fill.from(this.formattingSettings.nodeSettings.borderColor.value.value.toString()),
+            thickness: parseFloat(this.formattingSettings.nodeSettings.borderWidth.value.toString())
+        });
     }
 
     /**
-     * Part of the PowerBI widget logic and is called automatically by the framework.
+     * Every time something changes in the edit mode of the widget this method gets called.
+     * @param options
      */
     public update(options: VisualUpdateOptions) {
 
+        // a simple debounce
+        if (this.timestamp === null) {
+            this.timestamp = Date.now() + 1000; // 1secs
+        } else {
+            if (Date.now() < this.timestamp) {
+                return;
+            } else {
+                this.timestamp = null;
+            }
+        }
+        // no need to render things if there ain;t any data
         if (!options
             || !options.dataViews
             || !options.dataViews[0]
-            || _.isNil(this.graph)
+            || (this.graph == null)
         ) {
             return;
         }
+
+        // const dataView: powerbi.DataView = options.dataViews[0];
+        // const categoricalDataView: DataViewCategorical = dataView.categorical;
+        // const categories: DataViewCategoryColumn = categoricalDataView.categories[0];
+        // const categoryValues = categories.values;
+        //
+        // const measures: DataViewValueColumn = categoricalDataView.values[0];
+        // const measureValues = measures.values;
+        // const measureHighlights = measures.highlights;
+        // debugger
 
         // access to all data
         this.data = options.dataViews[0];
 
-        // the settings are a combination of the 'capabilities.json' and the 'settings.ts' file
-        this.parseSettings(options);
-        // set the style in case the settings have changed
+        // access to the formatting options
+        this.formattingSettings = this.formattingSettingsService.populateFormattingSettingsModel(VisualFormattingSettingsModel, options.dataViews);
         this.setStyle();
 
         // we use only categorical data for the graph
@@ -273,14 +306,14 @@ export class Visual implements IVisual {
         this.createDataMapping();
 
         try {
-            if (!this.settings.neighborhood.show) {
+            if (!this.formattingSettings.neighborhoodSettings.show) {
                 this.clearGraphFilter();
             }
             if (this.isHighlight) {
                 this.ignoreNeighborhoodSettings = false;
                 this.clearHighlight();
                 this.highlightSelection();
-                if (this.settings.neighborhood.show) {
+                if (this.formattingSettings.neighborhoodSettings.show) {
                     this.layout();
                 }
             } else if (this.isFiltered) {
@@ -314,7 +347,7 @@ export class Visual implements IVisual {
      * Whether the update is a filtered view of the network.
      */
     private get isFiltered() {
-        const notHighlight = !_.isNil(this.data.categorical.values) && this.data.categorical.values.length > 0 && !!this.data.categorical.values[0].values;
+        const notHighlight = !(this.data.categorical.values == null) && this.data.categorical.values.length > 0 && !!this.data.categorical.values[0].values;
         if (notHighlight) {
             const values = this.data.categorical.values[0].values;
             if (this.cachedNodeSource) {
@@ -330,18 +363,18 @@ export class Visual implements IVisual {
      * Whether the view is a highlight of the current data.
      */
     private get isHighlight() {
-        return !_.isNil(this.data.categorical.values) && this.data.categorical.values.length > 0 && !!this.data.categorical.values[0].highlights
+        return !(this.data.categorical.values == null) && this.data.categorical.values.length > 0 && !!this.data.categorical.values[0].highlights
     }
 
     private highlightSelection() {
         const selection = this.data.categorical.values[0].highlights;
-        const found = _.filter(selection, x => {
-            return !_.isNil(x);
+        const found = selection.filter(x => {
+            return !(x == null);
         });
         debug(`Highlights: ${found.length}`);
         // fetching the row indices of non-nil elements aka selection
-        const rowIndices = (_.filter(_.zip(_.range(selection.length), selection), t => {
-            return !_.isNil(t[1])
+        const rowIndices = ((zip(range(selection.length), selection)).filter(t => {
+            return !(t[1] == null)
         })).map(t => t[0]);
 
         const nodeIds: string[] = rowIndices.map(i => this.nodeIds[i]);
@@ -357,210 +390,75 @@ export class Visual implements IVisual {
                 this.highlightNode(node);
             }
             // should we show only the neighbors?
-            if (this.settings.neighborhood.show && !this.ignoreNeighborhoodSettings) {
+            if (this.formattingSettings.neighborhoodSettings.show && !this.ignoreNeighborhoodSettings) {
                 this.filteredNodeIds = this.getNeighborhoodOf(nodeIds, true);
                 debug(`Highlight neighborhood reduced to ${this.filteredNodeIds.length}`);
                 this.filteredGraph.nodePredicateChanged();
             }
             const nodeMidPoint = firstNode.layout.toPoint().add(new Point(firstNode.layout.width / 2, firstNode.layout.height / 2));
-            this.graphComponent.zoomToAnimated(nodeMidPoint, this.settings.network.zoomSelectFactor);
+            this.graphComponent.zoomToAnimated(nodeMidPoint, this.formattingSettings.networkSettings.zoomSelectFactor.value);
         }
 
     }
 
     /**
-     * Highlights the specified node.
-     * @param node
+     * Returns the neighborhood of the given items.
+     * @param ids
+     * @param includeGivenItems
      */
-    private highlightNode(node: INode): void {
-        if (_.isNil(node)) {
-            throw new Error('Attempt to highlight nil node.');
+    private getNeighborhoodOf(ids: string[], includeGivenItems = true): string[] {
+        let neighborIds = [];
+        //fetch the node source for the ids
+        const nodeSources = ids.map(id => this.getCachedNodeItem(id)) as INodeSourceItem[];
+        for (let i = 0; i < nodeSources.length; i++) {
+            let neighbors = this.fetchNeighbors(nodeSources[i], this.formattingSettings.neighborhoodSettings.maxChildrenLevel.value, this.formattingSettings.neighborhoodSettings.maxParentLevel.value);
+            neighborIds = neighborIds.concat(neighbors);
         }
-        // is the node already in the collection?
-        const found = _.find(this.highlights, h => {
-            return h.id === node.tag.id
+        // the different nodes might have overlapping neighborhoods
+        neighborIds = unique(neighborIds);
+
+        if (includeGivenItems) {
+            neighborIds = neighborIds.concat(ids);
+        }
+
+        return neighborIds;
+    }
+
+    private getCachedNodeItem(id: string): INodeSourceItem {
+        if ((this.cachedNodeSource == null)) {
+            throw new Error('Attempt to fetch a node source but no cache present.');
+        }
+        return this.cachedNodeSource.find((n: INodeSourceItem) => {
+            return n.id === id
         });
-        if (_.isNil(found)) {
-            const newHighlight = {
-                value: _.find(this.data.categorical.values[0].highlights, x => !_.isNil(x)),
-                id: node.tag.id,
-                oldStyle: node.style
-            };
-            this.highlights.push(newHighlight);
-            debug(`Highlight added: ${newHighlight.value}`);
-            const highlightStyle = this.getHighlightStyle(node);
-            this.graph.setStyle(node, highlightStyle);
-        }
     }
 
-    /**
-     * Clears any of the highlights and notifies other widgets about it.
-     */
-    private clearHighlight() {
-        if (_.isNil(this.highlights) || this.highlights.length === 0) {
+    private augmentNodeSourceWithNeighbors() {
+
+        if (!this.formattingSettings.neighborhoodSettings.show) {
             return;
         }
-
-        for (let i = 0; i < this.highlights.length; i++) {
-            const highlightedItem = this.highlights[i];
-            try {
-                const previousNode = this.getNodeById(highlightedItem.id);
-                if (previousNode) {
-                    this.graph.setStyle(previousNode, highlightedItem.oldStyle);
-                }
-            } catch (e) {
-                debugger
-            }
-        }
-        this.highlights = [];
-        this.filteredNodeIds = [];
-    }
-
-    private getHighlightStyle(node): ShapeNodeStyle {
-        return new ShapeNodeStyle({
-            shape: (node.style as ShapeNodeStyle).shape,
-            fill: this.settings.network.highlightColor,
-            stroke: this.nodeStroke
-        });
-    }
-
-    private setStyle() {
-
-        if (_.isNil(this.settings)) {
-            return;
-        }
-        this.graph.nodeDefaults.size = new Size(80, 50);
-
-        this.graph.nodeDefaults.style = new ShapeNodeStyle({
-            fill: new SolidColorFill(new Color(141, 177, 218)),
-            shape: ShapeNodeShape.RECTANGLE
-        });
-
-        this.nodeStroke = new Stroke({
-            fill: this.settings.nodes.borderColor,
-            thickness: this.settings.nodes.borderWidth
-        });
-    }
-
-
-    private getLayoutDirection(): LayoutOrientation {
-        switch (this.settings.network.layoutDirection) {
-            case LayoutDirection.TopToBottom:
-                return LayoutOrientation.TOP_TO_BOTTOM;
-            case LayoutDirection.BottomToTop:
-                return LayoutOrientation.BOTTOM_TO_TOP;
-            case LayoutDirection.LeftToRight:
-                return LayoutOrientation.LEFT_TO_RIGHT;
-            case LayoutDirection.RightToLeft:
-                return LayoutOrientation.RIGHT_TO_LEFT;
-        }
-    }
-
-    /**
-     * The graph layout pass.
-     */
-    private layout(): void {
-        let layout;
-        let layoutData: any = null;
-        switch (this.settings.network.layoutStyle) {
-            case NetworkLayoutStyle.Organic:
-                layout = new OrganicLayout({
-                    minimumNodeDistance: 120
-                });
-                layoutData = new OrganicLayoutData();
-                layoutData.edgeDirectedness.constant = 1;
-                break;
-            case NetworkLayoutStyle.Hierarchic:
-                layout = new HierarchicLayout({
-                    minimumLayerDistance: 50,
-                    layoutOrientation: this.getLayoutDirection(),
-
-                });
-                if (this.settings.edges.bundleHierarchicEdges) {
-                    layoutData = new HierarchicLayoutData({
-                        // sourceGroupIds: edge => edge.sourceNode,
-                        // targetGroupIds: edge => edge.targetNode
-                    });
-                } else {
-                    layoutData = new HierarchicLayoutData();
-                }
-                layoutData.edgeDirectedness.constant = 1;
-
-                (layoutData as HierarchicLayoutData).bfsLayererCoreNodes = this.findRoots();
-                break;
-            case NetworkLayoutStyle.Tree:
-                const isTree = this.analyzer.isTree(false);
-                if (isTree) {
-                    layout = new TreeLayout({
-                        layoutOrientation: this.getLayoutDirection()
-                    });
-                    layoutData = new TreeLayoutData();
-                    const roots = this.findRoots();
-                    if (roots && roots.length > 0) {
-                        (layoutData as TreeLayoutData).treeRoot.item = roots[0];
-                    }
-
-                } else {
-                    this.settings.network.layoutStyle = NetworkLayoutStyle.Hierarchic;
-                    this.layout();
-                }
-
-        }
-        try {
-
-            // we ignore async here but that's OK considering that nothing else happens beyond this
-            this.graphComponent.morphLayout({
-                layout: layout,
-                layoutData: layoutData
-            });
-        } catch (e) {
-            console.error(e);
-            debugger
-        }
-    }
-
-    /**
-     * Fetches the last node with minimum outdegree, i.e. with the least amount of parents.
-     */
-    private findRoots() {
-        if (_.isNil(this.graph)) {
-            return null;
+        if (isNil(this.cachedNodeSource)) {
+            throw new Error('No cache to augment with.');
         }
 
-        const dic = {};
-
-        this.graph.nodes.forEach(n => {
-            dic[n.tag.id] = {
-                outDegree: this.graph.outDegree(n),
-                node: n
-            };
-        });
-        const minOutDegree = _.min(_.map(dic, (v, k) => v.outDegree));
-        const roots = _.pickBy(dic, (v, k) => v.outDegree === minOutDegree);
-        return _.map(roots, (v, k) => v.node);
-    }
-
-    /**
-     * The names of the properties are mapped to field names.
-     * This dictionary is used later on to pick up the data for a property.
-     */
-    private createDataMapping() {
-        this.dataFieldMap = {};
-        for (let i = 0; i < this.data.metadata.columns.length; i++) {
-            const roles = this.data.metadata.columns[i].roles;
-            _.forEach(roles, (v, k) => {
-                if (v === true) {
-                    this.dataFieldMap[k] = {
-                        fieldName: this.data.metadata.columns[i].displayName,
-                        isMeasure: this.data.metadata.columns[i].isMeasure === true
-                    };
-                    // debug(`${k} -> data field: ${this.data.metadata.columns[i].displayName}`);
-                }
-            });
+        let toAdd = [];
+        for (let i = 0; i < this.nodesSource.length; i++) {
+            let neighbors = this.fetchNeighbors(this.nodesSource[i], this.formattingSettings.neighborhoodSettings.maxChildrenLevel.value, this.formattingSettings.neighborhoodSettings.maxParentLevel.value);
+            toAdd = toAdd.concat(neighbors);
         }
+        // the different nodes might have overlapping neighborhoods
+        toAdd = unique(toAdd);
+
+        this.filteredNodeIds = this.nodesSource.map(n => n.id).concat(toAdd);
+        this.edgesSource = this.cachedEdgeSource;
+        // from id's to INodeSourceItem
+        toAdd = toAdd.map(id => this.getCachedNodeItem(id));
+        this.nodesSource = this.nodesSource.concat(toAdd);
+
+        debug(`augmented node source with ${toAdd.length} nodes`);
 
     }
-
 
     /**
      * Fetches the neighborhood of the given item with specified maximum depth.
@@ -578,18 +476,18 @@ export class Visual implements IVisual {
 
         // note that the BFS also collects the item we start with;
         // we'll remove this at the end
-        if(this.settings.network.invertEdges){
+        if (this.formattingSettings.networkSettings.invertEdges) {
             this.bfs(node, maxParentLevel, NeighborType.Child, collector);
             this.bfs(node, maxChildLevel, NeighborType.Parent, collector);
-        }else{
+        } else {
             this.bfs(node, maxChildLevel, NeighborType.Child, collector);
             this.bfs(node, maxParentLevel, NeighborType.Parent, collector);
         }
 
         // remote the starting id
-        _.remove(neighbors, id => id === node.id);
+        neighbors = neighbors.filter(id => id !== node.id);
         // remove duplicates
-        neighbors = _.uniq(neighbors);
+        neighbors = unique(neighbors);
         return neighbors;
     }
 
@@ -601,10 +499,10 @@ export class Visual implements IVisual {
      * @param callback What to do with the visited node.
      */
     private bfs(item: INodeSourceItem, maxLevel = 1, direction: NeighborType = NeighborType.Child, callback: (n: INodeSourceItem, level: number) => void) {
-        if (_.isNil(callback)) {
+        if ((callback == null)) {
             throw new Error('Given BFS callback is nil.');
         }
-        if (_.isNil(item)) {
+        if ((item == null)) {
             throw new Error('Given BFS item is nil.');
         }
         if (maxLevel < 0) {
@@ -650,89 +548,241 @@ export class Visual implements IVisual {
         let ids = [];
         switch (neighborType) {
             case NeighborType.Parent:
-                ids = _.filter(this.cachedEdgeSource, (e: IEdgeSourceItem) => e.targetId === item.id).map(e => e.sourceId);
+                ids = this.cachedEdgeSource.filter((e: IEdgeSourceItem) => e.targetId === item.id).map(e => e.sourceId);
                 break;
             case NeighborType.Child:
-                ids = _.filter(this.cachedEdgeSource, (e: IEdgeSourceItem) => e.sourceId === item.id).map(e => e.targetId);
+                ids = this.cachedEdgeSource.filter((e: IEdgeSourceItem) => e.sourceId === item.id).map(e => e.targetId);
                 break;
         }
         if (ids.length === 0) {
             return [];
         }
-        return _.filter(this.cachedNodeSource, (n: INodeSourceItem) => _.includes(ids, n.id));
+        return this.cachedNodeSource.filter((n: INodeSourceItem) => ids.includes(n.id));
     }
 
     /**
-     * Adding the neighbors of the filtered nodes.
+     * The graph layout pass.
      */
-    private augmentNodeSourceWithNeighbors() {
+    private layout(): void {
+        let layout;
+        let layoutData: any = null;
+        switch (this.formattingSettings.networkSettings.layoutStyle.value.value.toString().toLowerCase()) {
+            case "organic":
+                layout = new OrganicLayout({
+                    minimumNodeDistance: 120
+                });
+                layoutData = new OrganicLayoutData();
+                layoutData.edgeDirectedness.constant = 1;
+                break;
+            case "hierarchic":
+                layout = new HierarchicLayout({
+                    minimumLayerDistance: 50,
+                    layoutOrientation: this.getLayoutDirection(),
 
-        if (!this.settings.neighborhood.show) {
+                });
+                if (this.formattingSettings.edgeSettings.bundleHierarchicEdges.value) {
+                    layoutData = new HierarchicLayoutData({
+                        sourceGroupIds: edge => edge.sourceNode,
+                        targetGroupIds: edge => edge.targetNode
+                    });
+                } else {
+                    layoutData = new HierarchicLayoutData();
+                }
+                layoutData.edgeDirectedness.constant = 1;
+
+                (layoutData as HierarchicLayoutData).bfsLayererCoreNodes = this.findRoots() as any;
+                break;
+            case "tree":
+                const isTree = this.analyzer.isTree(false);
+                if (isTree) {
+                    layout = new TreeLayout({
+                        layoutOrientation: this.getLayoutDirection()
+                    });
+                    layoutData = new TreeLayoutData();
+                    const roots = this.findRoots();
+                    if (roots && roots.length > 0) {
+                        (layoutData as TreeLayoutData).treeRoot.item = roots[0];
+                    }
+
+                } else {
+                    layout = new HierarchicLayout({
+                        minimumLayerDistance: 50,
+                        layoutOrientation: this.getLayoutDirection(),
+
+                    });
+                    if (this.formattingSettings.edgeSettings.bundleHierarchicEdges.value) {
+                        layoutData = new HierarchicLayoutData({
+                            sourceGroupIds: edge => edge.sourceNode,
+                            targetGroupIds: edge => edge.targetNode
+                        });
+                    } else {
+                        layoutData = new HierarchicLayoutData();
+                    }
+                    layoutData.edgeDirectedness.constant = 1;
+
+                    (layoutData as HierarchicLayoutData).bfsLayererCoreNodes = this.findRoots() as any;
+                    break;
+                }
+
+        }
+        try {
+
+            // we ignore async here but that's OK considering that nothing else happens beyond this
+            this.graphComponent.morphLayout({
+                layout: layout,
+                layoutData: layoutData
+            });
+        } catch (e) {
+            console.error(e);
+            debugger
+        }
+    }
+
+    private getLayoutDirection(): LayoutOrientation {
+        switch (this.formattingSettings.networkSettings.layoutDirection.value.toString().toLowerCase()) {
+            case "toptobottom":
+                return LayoutOrientation.TOP_TO_BOTTOM;
+            case "bottomtotop":
+                return LayoutOrientation.BOTTOM_TO_TOP;
+            case "lefttoright":
+                return LayoutOrientation.LEFT_TO_RIGHT;
+            case "righttoleft":
+                return LayoutOrientation.RIGHT_TO_LEFT;
+        }
+    }
+
+    /**
+     * Fetches the last node with minimum outdegree, i.e. with the least amount of parents.
+     */
+    private findRoots() {
+        if (isNil(this.graph)) {
+            return null;
+        }
+
+        const dic = {};
+
+        this.graph.nodes.forEach(n => {
+            dic[n.tag.id] = {
+                outDegree: this.graph.outDegree(n),
+                node: n
+            };
+        });
+        const minOutDegree = min(Object.entries(dic).map(([k, v]) => (v as any).outDegree));
+        const roots = [];
+        for (let k in dic) {
+            if (dic[k].outDegree === minOutDegree) {
+                roots.push(dic[k].node);
+            }
+        }
+        return roots;
+    }
+
+
+
+    /**
+     * Defines the interactions with the graph.
+     */
+    private setGraphInteractions() {
+        // this defines a read-only diagram
+        const mode = new GraphViewerInputMode();
+        mode.selectableItems = GraphItemTypes.NODE;
+        mode.selectableItems = GraphItemTypes.NONE;
+        mode.marqueeSelectableItems = GraphItemTypes.NONE;
+        mode.marqueeSelectionInputMode.enabled = false;
+
+        // clicking the canvas disables any highlight, like other PBI widgets
+        mode.addCanvasClickedListener((sender, args) => {
+            this.clearHighlight();
+            // let other widgets know there is nothing selected anymore
+            this.selectionManager.clear();
+            args.handled = true;
+        });
+
+        // clickin a node will highlight it
+        mode.addItemLeftClickedListener((sender, args) => {
+
+            const node = args.item;
+            if (node !== null && INode.isInstance(node)) { // could an edge or a label in principle
+                // clear the previous highlight, if any
+                this.clearHighlight();
+                this.highlightNode(node);
+                // let other widgets know we have a network selection.
+                this.selectionManager.select(node.tag.identity);
+                args.handled = true;
+            }
+        });
+        return mode;
+    }
+
+    /**
+     * Clears any of the highlights and notifies other widgets about it.
+     */
+    private clearHighlight() {
+        if (this.highlights == null || this.highlights.length === 0) {
             return;
         }
-        if (_.isNil(this.cachedNodeSource)) {
-            throw new Error('No cache to augment with.');
+
+        for (let i = 0; i < this.highlights.length; i++) {
+            const highlightedItem = this.highlights[i];
+            try {
+                const previousNode = this.getNodeById(highlightedItem.id);
+                if (previousNode) {
+                    this.graph.setStyle(previousNode, highlightedItem.oldStyle);
+                }
+            } catch (e) {
+                debugger
+            }
         }
+        this.highlights = [];
+        this.filteredNodeIds = [];
+    }
 
-        let toAdd = [];
-        for (let i = 0; i < this.nodesSource.length; i++) {
-            let neighbors = this.fetchNeighbors(this.nodesSource[i], this.settings.neighborhood.maxChildrenLevel, this.settings.neighborhood.maxParentLevel);
-            toAdd = toAdd.concat(neighbors);
+    /**
+     * Returns the (unique) node with the given id.
+     * @param id The id coming from the 'FromId' feature.
+     */
+    private getNodeById(id): INode {
+        if (this.fullGraph == null) {
+            throw new Error('The graph is not set.')
         }
-        // the different nodes might have overlapping neighborhoods
-        toAdd = _.uniq(toAdd);
-
-        this.filteredNodeIds = this.nodesSource.map(n => n.id).concat(toAdd);
-        this.edgesSource = this.cachedEdgeSource;
-        // from id's to INodeSourceItem
-        toAdd = toAdd.map(id => this.getCachedNodeItem(id));
-        this.nodesSource = this.nodesSource.concat(toAdd);
-
-        debug(`augmented node source with ${toAdd.length} nodes`);
+        return this.fullGraph.nodes.find({
+            predicate: n => {
+                return n.tag.id === id.toString();
+            }
+        })
 
     }
 
     /**
-     * Returns the neighborhood of the given items.
-     * @param ids
-     * @param includeGivenItems
+     * Highlights the specified node.
+     * @param node
      */
-    private getNeighborhoodOf(ids: string[], includeGivenItems = true): string[] {
-        let neighborIds = [];
-        //fetch the node source for the ids
-        const nodeSources = ids.map(id => this.getCachedNodeItem(id)) as INodeSourceItem[];
-        for (let i = 0; i < nodeSources.length; i++) {
-            let neighbors = this.fetchNeighbors(nodeSources[i], this.settings.neighborhood.maxChildrenLevel, this.settings.neighborhood.maxParentLevel);
-            neighborIds = neighborIds.concat(neighbors);
+    private highlightNode(node: INode): void {
+        if (node == null) {
+            throw new Error('Attempt to highlight nil node.');
         }
-        // the different nodes might have overlapping neighborhoods
-        neighborIds = _.uniq(neighborIds);
-
-        if (includeGivenItems) {
-            neighborIds = neighborIds.concat(ids);
+        // is the node already in the collection?
+        const found = this.highlights.find(h => {
+            return h.id === node.tag.id
+        });
+        if (found == null) {
+            const newHighlight = {
+                value: this.data.categorical.values[0].highlights.find(x => !(x == null)),
+                id: node.tag.id,
+                oldStyle: node.style
+            };
+            this.highlights.push(newHighlight);
+            debug(`Highlight added: ${newHighlight.value}`);
+            const highlightStyle = this.getHighlightStyle(node);
+            this.graph.setStyle(node, highlightStyle);
         }
-
-        return neighborIds;
     }
 
-    private edgesSourceContains(sourceId: string, targetId: string) {
-        return !_.isNil(_.find(this.edgesSource, (es: IEdgeSourceItem) => {
-            return es.sourceId === sourceId && es.targetId === targetId;
-        }));
-    }
-
-    private nodesSourceContains(id: string) {
-        return !_.isNil(_.find(this.nodesSource, (ns: INodeSourceItem) => {
-            return ns.id === id;
-        }));
-    }
-
-    private getCachedNodeItem(id: string): INodeSourceItem {
-        if (_.isNil(this.cachedNodeSource)) {
-            throw new Error('Attempt to fetch a node source but no cache present.');
-        }
-        return this.cachedNodeSource.find((n: INodeSourceItem) => {
-            return n.id === id
+    private getHighlightStyle(node): ShapeNodeStyle {
+        return new ShapeNodeStyle({
+            shape: (node.style as ShapeNodeStyle).shape,
+            fill: Fill.from(this.formattingSettings.networkSettings.highlightColor.value.value.toString()),
+            stroke: this.nodeStroke
         });
     }
 
@@ -745,8 +795,8 @@ export class Visual implements IVisual {
         this.edgesSource = this.createEdgeSource();
         // debugger
         if (updateCache) {
-            this.cachedNodeSource = _.clone(this.nodesSource);
-            this.cachedEdgeSource = _.clone(this.edgesSource);
+            this.cachedNodeSource = cloneArray(this.nodesSource);
+            this.cachedEdgeSource = cloneArray(this.edgesSource);
         }
         debug(`cached sources: ${this.cachedNodeSource.length} nodes and ${this.cachedEdgeSource.length} edges`);
 
@@ -755,28 +805,48 @@ export class Visual implements IVisual {
             this.augmentNodeSourceWithNeighbors();
 
         }
-        if (_.isNil(this.nodesSource) || this.nodesSource.length === 0) {
+        if (isNil(this.nodesSource) || this.nodesSource.length === 0) {
             return;
         }
 
         const edgeStroke = new Stroke({
-            fill: this.settings.edges.color,
-            thickness: this.settings.edges.width
+            fill: this.formattingSettings.edgeSettings.color.value.value.toString(),
+            thickness: parseFloat(this.formattingSettings.edgeSettings.width.value.toString())
         });
         const styleMap = {
             'rectangle': new ShapeNodeStyle({
                 shape: 'rectangle',
-                fill: this.settings.nodes.color,
+                fill: Fill.from(this.formattingSettings.nodeSettings.color.value.value.toString()),
                 stroke: this.nodeStroke
             }),
             'ellipse': new ShapeNodeStyle({
                 shape: 'ellipse',
-                fill: this.settings.nodes.color,
+                fill: Fill.from(this.formattingSettings.nodeSettings.color.value.value.toString()),
                 stroke: this.nodeStroke
             }),
             'round-rectangle': new ShapeNodeStyle({
                 shape: 'round-rectangle',
-                fill: this.settings.nodes.color,
+                fill: Fill.from(this.formattingSettings.nodeSettings.color.value.value.toString()),
+                stroke: this.nodeStroke
+            }),
+            'roundrectangle': new ShapeNodeStyle({
+                shape: 'round-rectangle',
+                fill: Fill.from(this.formattingSettings.nodeSettings.color.value.value.toString()),
+                stroke: this.nodeStroke
+            }),
+            'pill': new ShapeNodeStyle({
+                shape: "pill",
+                fill: Fill.from(this.formattingSettings.nodeSettings.color.value.value.toString()),
+                stroke: this.nodeStroke
+            }),
+            'octagon': new ShapeNodeStyle({
+                shape: "octagon",
+                fill: Fill.from(this.formattingSettings.nodeSettings.color.value.value.toString()),
+                stroke: this.nodeStroke
+            }),
+            'triangle': new ShapeNodeStyle({
+                shape: "triangle",
+                fill: Fill.from(this.formattingSettings.nodeSettings.color.value.value.toString()),
                 stroke: this.nodeStroke
             })
 
@@ -799,7 +869,7 @@ export class Visual implements IVisual {
             let labelMargin = 15;
             let nodeWidth = 50 + labelMargin;
             let nodeHeight = 40 + labelMargin;
-            if (this.settings.nodes.nodeReSize) {
+            if (this.formattingSettings.nodeSettings.nodeReSize.value) {
                 const mainLabelSize = TextRenderSupport.measureText(mainLabel, font);
                 const subLabelSize = TextRenderSupport.measureText(subLabel, font);
                 const topLabelSize = TextRenderSupport.measureText(topLabel, font);
@@ -814,7 +884,7 @@ export class Visual implements IVisual {
                 owner: node,
                 text: mainLabel,
                 style: new DefaultLabelStyle({
-                    textFill: this.settings.nodes.mainLabelColor,
+                    textFill: Fill.from(this.formattingSettings.nodeSettings.mainLabelColor.value.value.toString()),
                     insets: 5
                 }),
                 layoutParameter: InteriorLabelModel.CENTER
@@ -824,7 +894,7 @@ export class Visual implements IVisual {
                 text: subLabel,
                 layoutParameter: InteriorLabelModel.SOUTH,
                 style: new DefaultLabelStyle({
-                    textFill: this.settings.nodes.subLabelColor,
+                    textFill: Fill.from(this.formattingSettings.nodeSettings.subLabelColor.value.value.toString()),
                     textSize: 10,
                     insets: [7, 0, 3, 0]
                 })
@@ -834,7 +904,7 @@ export class Visual implements IVisual {
                 text: topLabel,
                 layoutParameter: InteriorLabelModel.NORTH,
                 style: new DefaultLabelStyle({
-                    textFill: this.settings.nodes.topLabelColor,
+                    textFill: Fill.from(this.formattingSettings.nodeSettings.topLabelColor.value.value.toString()),
                     textSize: 10,
                     insets: [3, 0, 7, 0]
                 })
@@ -842,14 +912,14 @@ export class Visual implements IVisual {
 
             nodeDic[item.id.toString()] = node;
         }
-        debug(`node dictionary: ${_.keys(nodeDic).length}`);
+        debug(`node dictionary: ${Object.keys(nodeDic).length}`);
 
-        if (this.settings.edges.show) {
+        if (this.formattingSettings.edgeSettings.show.value) {
 
 
             let edgeLabelSource = this.getCategoricalData('EdgeLabel');
 
-            if (_.isNil(this.edgesSource) || this.edgesSource.length === 0) {
+            if (isNil(this.edgesSource) || this.edgesSource.length === 0) {
                 return;
             }
             const labelModel = new EdgeSegmentLabelModel({
@@ -857,20 +927,20 @@ export class Visual implements IVisual {
                 offset: 10
             });
             const edgeLabelStyle = new DefaultLabelStyle({
-                textFill: this.settings.edges.labelColor,
-                textSize: Math.max(5, Math.min(30, parseInt(this.settings.edges.labelSize.toString())))
+                textFill: Fill.from(this.formattingSettings.edgeSettings.labelColor.value.value.toString()),
+                textSize: Math.max(5, Math.min(30, parseInt(this.formattingSettings.edgeSettings.labelSize.value.toString())))
             });
             const sourceArrowStyle = new Arrow({
-                type: this.getArrowType(this.settings.edges.sourceArrow),
-                stroke: this.settings.edges.color,
-                fill: this.settings.edges.color,
+                type: this.getArrowType(this.formattingSettings.edgeSettings.sourceArrow.value.value.toString()),
+                stroke: Stroke.from(this.formattingSettings.edgeSettings.color.value.value.toString()),
+                fill: Fill.from(this.formattingSettings.edgeSettings.color.value.value.toString()),
                 cropLength: 0
             });
 
             const targetArrowStyle = new Arrow({
-                type: this.getArrowType(this.settings.edges.targetArrow),
-                stroke: this.settings.edges.color,
-                fill: this.settings.edges.color,
+                type: this.getArrowType(this.formattingSettings.edgeSettings.targetArrow.value.value.toString()),
+                stroke: Stroke.from(this.formattingSettings.edgeSettings.color.value.value.toString()),
+                fill: Fill.from(this.formattingSettings.edgeSettings.color.value.value.toString()),
                 cropLength: 1
             });
             const edgeStyle = new PolylineEdgeStyle({
@@ -881,16 +951,16 @@ export class Visual implements IVisual {
             });
 
 
-            let showEdgeLabel = this.settings.edges.showLabel && !_.isNil(edgeLabelSource) && edgeLabelSource.length > 0;
+            let showEdgeLabel = this.formattingSettings.edgeSettings.showLabel.value && !isNil(edgeLabelSource) && edgeLabelSource.length > 0;
             for (let i = 0; i < this.edgesSource.length; i++) {
                 try {
-                    if (_.isNil(this.edgesSource[i].sourceId) || _.isNil(this.edgesSource[i].targetId) || _.isNil(nodeDic[this.edgesSource[i].sourceId]) || _.isNil(nodeDic[this.edgesSource[i].targetId])) {
+                    if (isNil(this.edgesSource[i].sourceId) || isNil(this.edgesSource[i].targetId) || isNil(nodeDic[this.edgesSource[i].sourceId]) || isNil(nodeDic[this.edgesSource[i].targetId])) {
                         continue; // happens when the data defines an edge without defining both endpoints
                     }
                     let s = this.edgesSource[i].sourceId;
                     let t = this.edgesSource[i].targetId;
 
-                    if (this.settings.network.invertEdges) {
+                    if (this.formattingSettings.networkSettings.invertEdges) {
                         s = this.edgesSource[i].targetId;
                         t = this.edgesSource[i].sourceId;
                     }
@@ -900,10 +970,10 @@ export class Visual implements IVisual {
                     });
                     this.fullGraph.setStyle(edge, edgeStyle);
 
-                    if (!_.isNil(edgeLabelSource) && !_.isNil(edgeLabelSource[i])) {
+                    if (!isNil(edgeLabelSource) && !isNil(edgeLabelSource[i])) {
                         edge.tag = edgeLabelSource[i];
                         if (showEdgeLabel) {
-                            const edgeLabelText = edgeLabelSource[i] + this.settings.edges.labelSuffix;
+                            const edgeLabelText = edgeLabelSource[i] + this.formattingSettings.edgeSettings.labelSuffix.value;
                             const edgeLabelLayoutParameter = labelModel.createParameterFromSource(0, 0.0, EdgeSides.LEFT_OF_EDGE);
 
                             const label = this.fullGraph.addLabel(edge, edgeLabelText, edgeLabelLayoutParameter, edgeLabelStyle);
@@ -914,7 +984,7 @@ export class Visual implements IVisual {
 
                 }
             }
-            if (this.settings.nodes.topLabelIsRestPercentage && !_.isNil(edgeLabelSource)) {
+            if (this.formattingSettings.nodeSettings.topLabelIsRestPercentage.value && !isNil(edgeLabelSource)) {
                 const restPercentages = {};
                 this.fullGraph.edges.forEach(e => {
                     const id = e.sourceNode.tag.id.toString();
@@ -927,8 +997,8 @@ export class Visual implements IVisual {
                 this.fullGraph.nodes.forEach(n => {
                     const topLabel = n.labels.find(lab => lab.layoutParameter === InteriorLabelModel.NORTH);
                     const restPercent = restPercentages[n.tag.id.toString()];
-                    if (!_.isNil(topLabel)) {
-                        if (!_.isNil(restPercent) && restPercent !== 0) { // we omit the '0%' labels for visibility
+                    if (!isNil(topLabel)) {
+                        if (!isNil(restPercent) && restPercent !== 0) { // we omit the '0%' labels for visibility
                             this.fullGraph.setLabelText(topLabel, restPercent + '%')
                         } else {
                             this.fullGraph.setLabelText(topLabel, '');
@@ -960,18 +1030,96 @@ export class Visual implements IVisual {
 
 
     /**
+     * Assembles the node data source for the GraphBuilder.
+     */
+    private createNodeSource(): INodeSourceItem[] {
+
+        // all the ids corresponding to the rows of edges, you have multiplicity here
+        this.nodeIds = this.getCategoricalData('NodeId');
+
+        if (isNil(this.nodeIds)) {
+            return [];
+        }
+        const uniqueIds = unique(this.nodeIds);
+        const nodeMainLabels = this.getCategoricalData('NodeMainLabel');
+        const nodeSecondLabels = this.getCategoricalData('NodeSecondLabel');
+        const nodeShapes = this.getCategoricalData('NodeShape');
+        const nodeTopLabels = this.getCategoricalData('NodeTopLabel');
+        const nodeSource: INodeSourceItem[] = [];
+        // creating unique nodes from the unique ids
+        for (let i = 0; i < uniqueIds.length; i++) {
+            const id = uniqueIds[i].toString();
+            // pick up the first row where this id appears
+            // supposed all the entity info is the same whenever this id appears, so the first will do
+            const rowIndex = this.nodeIds.findIndex(x => x === id);
+            const item: INodeSourceItem = {
+                id: id,
+                label: null,
+                shape: null,
+                subLabel: null,
+                topLabel: null,
+                identity: null,
+                layerIndex: null
+            };
+            const categorical = this.data.categorical.categories[0];
+            item.identity = this.host.createSelectionIdBuilder()
+                .withCategory(categorical, rowIndex)
+                .createSelectionId();
+            if (nodeMainLabels && i < nodeMainLabels.length) {
+                item.label = isNil(nodeMainLabels[rowIndex]) ? '' : nodeMainLabels[rowIndex].toString();
+            }
+            if (nodeShapes && i < nodeShapes.length) {
+                item.shape = isNil(nodeShapes[rowIndex]) ? null : nodeShapes[rowIndex].toString();
+            }
+            if (this.formattingSettings.nodeSettings.showBottomLabel.value && nodeSecondLabels && i < nodeSecondLabels.length) {
+                item.subLabel = isNil(nodeSecondLabels[rowIndex]) ? null : nodeSecondLabels[rowIndex].toString();
+            }
+            if (this.formattingSettings.nodeSettings.showTopLabel.value && nodeTopLabels && i < nodeTopLabels.length) {
+                item.topLabel = isNil(nodeTopLabels[rowIndex]) ? null : nodeTopLabels[rowIndex].toString();
+            }
+            nodeSource.push(item);
+        }
+        return nodeSource;
+    }
+
+    /**
+     * Assembles the given datasets to something yFiles can use with the GraphBuilder.
+     */
+    private createEdgeSource(): IEdgeSourceItem[] {
+        const nodeIds = this.getCategoricalData('NodeId');
+        const targetIds = this.getCategoricalData('TargetId');
+        if ((targetIds == null) || targetIds.length === 0) {
+            return [];
+        }
+
+        const edges: IEdgeSourceItem[] = [];
+        for (let i = 0; i < nodeIds.length; i++) {
+            // null target means no edge towards anything else, which happens e.g. with the root of a tree
+            if ((targetIds[i] == null)) {
+                continue;
+            }
+            const item: IEdgeSourceItem = {
+                sourceId: nodeIds[i].toString(),
+                targetId: targetIds[i].toString()
+            };
+            edges.push(item)
+        }
+        return edges;
+    }
+
+    /**
      * Fetches the dataset with the given name.
      * @param name
      */
     private getCategoricalData(name): string[] {
-        const categoricalFields = ['NodeId', 'TargetId', 'NodeMainLabel', 'NodeSecondLabel', 'NodeShape', 'EdgeLabel', 'NodeTopLabel'];
+        const categoricalFields: string[] = ['NodeId', 'TargetId', 'NodeMainLabel', 'NodeSecondLabel', 'NodeShape', 'EdgeLabel', 'NodeTopLabel'];
 
-        if (!_.includes(categoricalFields, name)) {
+        if (!categoricalFields.includes(name, 0)) {
             return null;
         }
         const fieldDefinition = this.dataFieldMap[name];
 
-        if (_.isNil(fieldDefinition)) {
+        if (fieldDefinition == null) {
             return null;
         }
         if (fieldDefinition.isMeasure) // means the data comes from the highlights info
@@ -987,7 +1135,7 @@ export class Visual implements IVisual {
             return null;
         } else {
             const index = this.getCategoricalIndex(fieldDefinition.fieldName);
-            return index < 0 ? null : this.data.categorical.categories[index].values.map(v => _.isNil(v) ? null : v.toString()) as string[];
+            return index < 0 ? null : this.data.categorical.categories[index].values.map(v => (v == null) ? null : v.toString()) as string[];
         }
 
 
@@ -1011,142 +1159,37 @@ export class Visual implements IVisual {
     }
 
     /**
-     * Assembles the node data source for the GraphBuilder.
+     * The names of the properties are mapped to field names.
+     * This dictionary is used later on to pick up the data for a property.
      */
-    private createNodeSource(): INodeSourceItem[] {
+    private createDataMapping() {
+        this.dataFieldMap = {};
+        for (let i = 0; i < this.data.metadata.columns.length; i++) {
+            const roles = this.data.metadata.columns[i].roles;
+            for (let k in roles) {
 
-        // all the ids corresponding to the rows of edges, you have multiplicity here
-        this.nodeIds = this.getCategoricalData('NodeId');
-
-        if (_.isNil(this.nodeIds)) {
-            return [];
+                if (roles[k] === true) {
+                    this.dataFieldMap[k] = {
+                        fieldName: this.data.metadata.columns[i].displayName,
+                        isMeasure: this.data.metadata.columns[i].isMeasure === true
+                    };
+                }
+            }
         }
-        const uniqueIds = _.uniq(this.nodeIds);
-        const nodeMainLabels = this.getCategoricalData('NodeMainLabel');
-        const nodeSecondLabels = this.getCategoricalData('NodeSecondLabel');
-        const nodeShapes = this.getCategoricalData('NodeShape');
-        const nodeTopLabels = this.getCategoricalData('NodeTopLabel');
-        const nodeSource: INodeSourceItem[] = [];
-        // creating unique nodes from the unique ids
-        for (let i = 0; i < uniqueIds.length; i++) {
-            const id = uniqueIds[i].toString();
-            // pick up the first row where this id appears
-            // supposed all the entity info is the same whenever this id appears, so the first will do
-            const rowIndex = _.findIndex(this.nodeIds, x => x === id);
-            const item: INodeSourceItem = {
-                id: id,
-                label: null,
-                shape: null,
-                subLabel: null,
-                topLabel: null,
-                identity: null,
-                layerIndex: null
-            };
-            const categorical = this.data.categorical.categories[0];
-            item.identity = this.host.createSelectionIdBuilder()
-                .withCategory(categorical, rowIndex)
-                .createSelectionId();
-            if (nodeMainLabels && i < nodeMainLabels.length) {
-                item.label = _.isNil(nodeMainLabels[rowIndex]) ? '' : nodeMainLabels[rowIndex].toString();
-            }
-            if (nodeShapes && i < nodeShapes.length) {
-                item.shape = _.isNil(nodeShapes[rowIndex]) ? null : nodeShapes[rowIndex].toString();
-            }
-            if (this.settings.nodes.showBottomLabel && nodeSecondLabels && i < nodeSecondLabels.length) {
-                item.subLabel = _.isNil(nodeSecondLabels[rowIndex]) ? null : nodeSecondLabels[rowIndex].toString();
-            }
-            if (this.settings.nodes.showTopLabel && nodeTopLabels && i < nodeTopLabels.length) {
-                item.topLabel = _.isNil(nodeTopLabels[rowIndex]) ? null : nodeTopLabels[rowIndex].toString();
-            }
-            nodeSource.push(item);
-        }
-        return nodeSource;
     }
 
     /**
-     * Returns the (unique) node with the given id.
-     * @param id The id coming from the 'FromId' feature.
+     * Returns properties pane formatting model content hierarchies, properties and latest formatting values, Then populate properties pane.
+     * This method is called once every time we open properties pane or when the user edit any format property.
      */
-    private getNodeById(id): INode {
-        if (_.isNil(this.fullGraph)) {
-            throw new Error('The graph is not set.')
-        }
-        return this.fullGraph.nodes.find({
-            predicate: n => {
-                return n.tag.id === id.toString();
-            }
-        })
-
-    }
-
-    /**
-     * Assembles the given datasets to something yFiles can use with the GraphBuilder.
-     */
-    private createEdgeSource(): IEdgeSourceItem[] {
-        const nodeIds = this.getCategoricalData('NodeId');
-        const targetIds = this.getCategoricalData('TargetId');
-        if (_.isNil(targetIds) || targetIds.length === 0) {
-            return [];
-        }
-
-        const edges: IEdgeSourceItem[] = [];
-        for (let i = 0; i < nodeIds.length; i++) {
-            // null target means no edge towards anything else, which happens e.g. with the root of a tree
-            if (_.isNil(targetIds[i])) {
-                continue;
-            }
-            const item: IEdgeSourceItem = {
-                sourceId: nodeIds[i].toString(),
-                targetId: targetIds[i].toString()
-            };
-            edges.push(item)
-        }
-        return edges;
-    }
-
-    /**
-     * Converts the metadata to a settings format we can use in the rendering logic.
-     */
-    private static parseSettings(dataView: DataView): VisualSettings {
-        return VisualSettings.parse(dataView) as VisualSettings;
-    }
-
-    /**
-     * This function gets called for each of the objects defined in the capabilities files and allows you to select which of the
-     * objects and properties you want to expose to the users in the property pane.
-     * See this article: https://microsoft.github.io/PowerBI-visuals/tutorials/building-react-based-custom-visual/working-with-settings/
-     */
-    public enumerateObjectInstances(options: EnumerateVisualObjectInstancesOptions): VisualObjectInstance[] | VisualObjectInstanceEnumerationObject {
-        return VisualSettings.enumerateObjectInstances(this.settings || VisualSettings.getDefault(), options);
-    }
-
-    private createGraphComponent() {
-        const div: HTMLDivElement = document.createElement('div');
-
-        div.setAttribute('id', 'graphHost');
-        div.style.width = '100%';
-        div.style.height = '100%';
-        this.hostElement.appendChild(div);
-        this.graphComponent = new GraphComponent('#graphHost');
-        this.graphComponent.inputMode = this.setGraphInteractions();
-        this.nodeFilter = (n: INode) => {
-            // we use a filtered graph only for displaying neighborhood views.
-            if (!this.settings.neighborhood.show || this.ignoreNeighborhoodSettings) {
-                return true;
-            }
-
-            return _.includes(this.filteredNodeIds, n.tag.id);
-        };
-        this.fullGraph = new DefaultGraph();
-        this.filteredGraph = new FilteredGraphWrapper(this.fullGraph, this.nodeFilter, (e) => true);
-        this.graph = this.filteredGraph;
-        this.graphComponent.graph = this.filteredGraph;
-        this.analyzer = new GraphStructureAnalyzer(this.graph);
-        this.setStyle();
+    public getFormattingModel(): powerbi.visuals.FormattingModel {
+        return this.formattingSettingsService.buildFormattingModel(this.formattingSettings);
     }
 
     private createSelectionMechanics() {
         this.selectionIdBuilder = this.host.createSelectionIdBuilder();
         this.selectionManager = this.host.createSelectionManager();
     }
+
+    //endregion
 }

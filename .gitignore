@@ -143,6 +143,7 @@ fabric.properties
 
 /dist
 /.tmp
-/yFiles/
+/yFiles/license.json
+/yFiles/yfiles-25.0.3.tgz
 /webpack.statistics.dev.html
 .DS_Store

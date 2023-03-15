@@ -1,27 +1,27 @@
 # yFiles Diagrams in Power BI
 
-![](./docs/PowerDiagramDark.png) 
+![](./docs/PowerDiagramDark.png)
 
 This sample demonstrates how to get yFiles diagrams into a Power BI dashboard with dataset integration. Many features one expects from such an integration are implemented; filtering, selection synchronization, highlights, styling and more. Below you can find an overview of the features as well as how to compile the code. The [widget's manual](./docs/PowerDiagram.pdf) is also available.
 
 The compiled widget **works both in the desktop version and Power BI online (service)**. The same package can be uploaded an used and you can integrate it in any of your dashboards. The only requirement is a valid yFiles license. You can also download [a trial version](https://my.yworks.com/signup?product=YFILES_HTML_EVAL) and the same license can be used for the Power BI widget.
- 
-This sample is one of the many ways you can integrate yFiles in your enterprise applications and integrations. Please visit the [demo](https://www.yworks.com/products/yfiles/demos) pages and [our blog](https://www.yworks.com/blog) for the latest bits and graph bonanza. 
+
+This sample is one of the many ways you can integrate yFiles in your enterprise applications and integrations. Please visit the [demo](https://www.yworks.com/products/yfiles/demos) pages and [our blog](https://www.yworks.com/blog) for the latest bits and graph bonanza.
 
 
 ## Installation
- 
+
 The tutorial [Developing a Power BI visual](https://docs.microsoft.com/en-us/power-bi/developer/custom-visual-develop-tutorial) details the steps to create a custom visual and applies to this yFiles widget as well.
 The most import elements in this tutorial are:
 
 - installing the Power BI tools for NodeJs via `npm i -g powerbi-visuals-tools`
 - registration of a Power BI certificate for localhost via `pbiviz --install-cert`
-- start the custom Power BI development server with 
+- start the custom Power BI development server with
 
-    pbiviz start
+  pbiviz start
 
 In case the certificate is still giving problems with something like *"net::ERR_CERT_COMMON_NAME_INVALID"*, it's because Chrome browser blocks this address https://localhost:8080 because of non-valid certificate.
-Please open the following link in separate browser tab: https://localhost:8080/assets/status. Chrome will show the warning message, click `advanced > proceed` to unsafe version. After that Chrome will work with dev visual correctly.        
+Please open the following link in separate browser tab: https://localhost:8080/assets/status. Chrome will show the warning message, click `advanced > proceed` to unsafe version. After that Chrome will work with dev visual correctly.
 
 You can use any browser to enjoy Power BI dashboards but Chrome is most apt for debugging custom visuals.
 
@@ -31,8 +31,8 @@ If you see an error like the one below
 
 it's because the visual debugging is not set in the settings:
 
-![](./assets/DeveloperSettings.png) 
- 
+![](./assets/DeveloperSettings.png)
+
 ## Sample dashboards
 
 We have assembled two shared dashboards which allow you to see the widget in action. One is based on [a standard tree](https://app.powerbi.com/view?r=eyJrIjoiM2JkMWVmYTUtMDk5OS00NWVmLThjZWMtZGI4NWYyN2E0YmY3IiwidCI6ImVkODVlZmU3LWUwNjgtNDE0Yi1iMjhiLTc4YTA4YjU3YTU4OCIsImMiOjh9) and the other is [a true graph](https://app.powerbi.com/view?r=eyJrIjoiYWE5ZThiOGYtYjQ2OC00NGJkLTgyZGUtNGVhNGUzNThiNTVmIiwidCI6ImVkODVlZmU3LWUwNjgtNDE0Yi1iMjhiLTc4YTA4YjU3YTU4OCIsImMiOjh9):
@@ -95,7 +95,7 @@ Note in this respect an important setting for the hierarchic layout which merges
 
 ## Neighborhood
 
-Sometimes you want to focus on the vicinity of an item. The neighborhood setting allows you to filter the immediate parents and children of a node. The number corresponds to the depth in the hierarchy. 
+Sometimes you want to focus on the vicinity of an item. The neighborhood setting allows you to filter the immediate parents and children of a node. The number corresponds to the depth in the hierarchy.
 This neighborhood shows the whole diagram if no item is filtered or selected since the whole diagram is the neighborhood of itself.
 
 ![](./docs/Neighbors.png)
@@ -110,7 +110,7 @@ Nodes in the yFiles widget can be selected and it will trigger the same selectio
 Conversely, if you select an item in an adjacent widget the item will be highlighted and zoom-centered in the yFiles widget. In case there are multiple nodes possible the first one will be taken.
 To deselect one should click on the empty canvas of the diagram. This will trigger a redraw of all the widgets. Deselecting all is similar in all widgets.
 
-![](./docs/Sync.png)      
+![](./docs/Sync.png)
 
 
 ## Defining Capabilities
@@ -176,33 +176,33 @@ Depending on your system, it can take **up to hours** to compile a widget. Shoul
 
 ## yFiles Dependency and License
 
-The widget depends on the lib folder from the yFiles distribution, including the license. 
+The widget depends on the lib folder from the yFiles distribution, including the license.
 
 Of course, once the widget has been compiled as a standalone package (as explained below) the source code (including the license) becomes secondary. The widget is self-contained and works in both the desktop and online version of Power BI.
 Obviously, like any other HTML application, you the need the source code to alter the widget and recompile it to a new version. This is in particular true if you wish one day to upgrade the underlying yFiles dependency.
 
 ![](./docs/License.png)
 
-      
+
 ## About yFiles
 
-This application is powered by [yFiles for HTML](https://www.yworks.com/products/yfiles-for-html), the powerful 
+This application is powered by [yFiles for HTML](https://www.yworks.com/products/yfiles-for-html), the powerful
 diagramming library.
 
-Turn your data into clear diagrams with the help of unequaled automatic diagram layout, use rich visualizations for your 
+Turn your data into clear diagrams with the help of unequaled automatic diagram layout, use rich visualizations for your
 diagram elements, and give your users an intuitive interface for smooth interaction.
 
 You can learn more about the many features that come with [yFiles](https://www.yworks.com/products/yfiles)
 on the [yFiles Features Overview](https://www.yworks.com/products/yfiles/features).
 
-If you want to try it for yourself, you can obtain a free evaluation version of yFiles in the 
+If you want to try it for yourself, you can obtain a free evaluation version of yFiles in the
 [yWorks Evaluation Center](https://my.yworks.com/signup?product=YFILES_HTML_EVAL).
- 
+
 
 
 ## Data
 
-In the data folder of the repo you can find a Python notebook which allows you to generate diverse datasets to play with the widget. You can generate both tree-like and graph-like data using various algorithms. The output is a CSV which needs to be uploaded inside Power BI. The procedure is the same for the desktop and the online version. The generated data also shows you the kind of format you need since typically a graph structure needs two datasets (one for the nodes and one for the edges). The required format combines all in one dataset because Power BI does not support multiple data sources per dashboard. It means that there is repetition in the dataset but it's the only way to use a table for graph-like structures. 
+In the data folder of the repo you can find a Python notebook which allows you to generate diverse datasets to play with the widget. You can generate both tree-like and graph-like data using various algorithms. The output is a CSV which needs to be uploaded inside Power BI. The procedure is the same for the desktop and the online version. The generated data also shows you the kind of format you need since typically a graph structure needs two datasets (one for the nodes and one for the edges). The required format combines all in one dataset because Power BI does not support multiple data sources per dashboard. It means that there is repetition in the dataset but it's the only way to use a table for graph-like structures.
 
 Of course, all generated random data is fictitious and any correspondence is accidental.
 
