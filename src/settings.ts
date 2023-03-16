@@ -23,7 +23,9 @@ class NetworkSettings extends FormattingSettingsCard {
     });
     invertEdges = new formattingSettings.ToggleSwitch({
         name: "invertEdges",
-        displayName: "Invert Edges",
+        "displayName": "Invert Edges",
+        "displayNameKey": "Visual_Edges_invert",
+        "description":"Invert all edges",
         value: false
     });
     zoomSelectFactor = new formattingSettings.NumUpDown({
@@ -67,17 +69,18 @@ class NetworkSettings extends FormattingSettingsCard {
     });
     name = "networkSettings"
     displayName = "Network Settings"
-    slices: Array<FormattingSettingsSlice> = [
+    slices:FormattingSettingsSlice[] = [
         this.layoutStyle,
-        this.invertEdges,
         this.zoomSelectFactor,
         this.highlightColor,
-        this.layoutDirection
+        this.layoutDirection,
+        this.invertEdges,
+
     ];
 }
 
 class NeighborhoodSettings extends FormattingSettingsCard {
-    show = new formattingSettings.ToggleSwitch({
+    showNeighborhood = new formattingSettings.ToggleSwitch({
         name: "showNeighborhood",
         displayName: "Show Neighborhood",
         value: false
@@ -98,8 +101,8 @@ class NeighborhoodSettings extends FormattingSettingsCard {
     });
     name = "neighborhoodSettings"
     displayName = "Neighborhood Settings"
-    slices: Array<FormattingSettingsSlice> = [
-        this.show,
+    slices: FormattingSettingsSlice[] = [
+        this.showNeighborhood,
         this.maxParentLevel,
         this.maxChildrenLevel
     ];
@@ -179,7 +182,7 @@ class NodeSettings extends FormattingSettingsCard {
 
     name = "nodeSettings"
     displayName = "Node Settings"
-    slices: Array<FormattingSettingsSlice> = [
+    slices: FormattingSettingsSlice[] = [
         this.color,
         this.borderColor,
         this.mainLabelColor,
@@ -305,7 +308,7 @@ class EdgeSettings extends FormattingSettingsCard {
     });
     name = "edgeSettings"
     displayName = "Edge Settings"
-    slices: Array<FormattingSettingsSlice> = [
+    slices: FormattingSettingsSlice[] = [
         this.show,
         this.showLabel,
         this.color,

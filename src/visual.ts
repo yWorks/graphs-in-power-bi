@@ -226,7 +226,7 @@ export class Visual implements IVisual {
 
         this.nodeFilter = (n: INode) => {
             // we use a filtered graph only for displaying neighborhood views.
-            if ((this.formattingSettings && !this.formattingSettings.neighborhoodSettings.show) || this.ignoreNeighborhoodSettings) {
+            if ((this.formattingSettings && !this.formattingSettings.neighborhoodSettings.showNeighborhood.value) || this.ignoreNeighborhoodSettings) {
                 return true;
             }
 
@@ -306,14 +306,14 @@ export class Visual implements IVisual {
         this.createDataMapping();
 
         try {
-            if (!this.formattingSettings.neighborhoodSettings.show) {
+            if (!this.formattingSettings.neighborhoodSettings.showNeighborhood.value) {
                 this.clearGraphFilter();
             }
             if (this.isHighlight) {
                 this.ignoreNeighborhoodSettings = false;
                 this.clearHighlight();
                 this.highlightSelection();
-                if (this.formattingSettings.neighborhoodSettings.show) {
+                if (this.formattingSettings.neighborhoodSettings.showNeighborhood.value) {
                     this.layout();
                 }
             } else if (this.isFiltered) {
@@ -390,7 +390,7 @@ export class Visual implements IVisual {
                 this.highlightNode(node);
             }
             // should we show only the neighbors?
-            if (this.formattingSettings.neighborhoodSettings.show && !this.ignoreNeighborhoodSettings) {
+            if (this.formattingSettings.neighborhoodSettings.showNeighborhood.value && !this.ignoreNeighborhoodSettings) {
                 this.filteredNodeIds = this.getNeighborhoodOf(nodeIds, true);
                 debug(`Highlight neighborhood reduced to ${this.filteredNodeIds.length}`);
                 this.filteredGraph.nodePredicateChanged();
@@ -435,7 +435,7 @@ export class Visual implements IVisual {
 
     private augmentNodeSourceWithNeighbors() {
 
-        if (!this.formattingSettings.neighborhoodSettings.show) {
+        if (!this.formattingSettings.neighborhoodSettings.showNeighborhood.value) {
             return;
         }
         if (isNil(this.cachedNodeSource)) {
@@ -476,7 +476,7 @@ export class Visual implements IVisual {
 
         // note that the BFS also collects the item we start with;
         // we'll remove this at the end
-        if (this.formattingSettings.networkSettings.invertEdges) {
+        if (this.formattingSettings.networkSettings.invertEdges.value) {
             this.bfs(node, maxParentLevel, NeighborType.Child, collector);
             this.bfs(node, maxChildLevel, NeighborType.Parent, collector);
         } else {
@@ -639,7 +639,7 @@ export class Visual implements IVisual {
     }
 
     private getLayoutDirection(): LayoutOrientation {
-        switch (this.formattingSettings.networkSettings.layoutDirection.value.toString().toLowerCase()) {
+        switch (this.formattingSettings.networkSettings.layoutDirection.value.value.toString().toLowerCase()) {
             case "toptobottom":
                 return LayoutOrientation.TOP_TO_BOTTOM;
             case "bottomtotop":
@@ -960,7 +960,7 @@ export class Visual implements IVisual {
                     let s = this.edgesSource[i].sourceId;
                     let t = this.edgesSource[i].targetId;
 
-                    if (this.formattingSettings.networkSettings.invertEdges) {
+                    if (this.formattingSettings.networkSettings.invertEdges.value) {
                         s = this.edgesSource[i].targetId;
                         t = this.edgesSource[i].sourceId;
                     }

@@ -72,8 +72,11 @@
           }
         },
         "invertEdges": {
+          "displayName": "Invert Edges",
+          "description":"Invert all edges",
+          "displayNameKey": "Visual_Edges_invert",
           "type": {
-            "bool": false
+            "bool": true
           }
         },
         "zoomSelectFactor": {
@@ -129,7 +132,7 @@
       "description": "Augments the filtered view with parents and children.",
       "displayNameKey": "Visual_Neighborhood",
       "properties": {
-        "show": {
+        "showNeighborhood": {
           "description": "Whether the neighborhood of filtered nodes is shown.",
           "displayName": "Show",
           "displayNameKey": "Visual_ShowNeighbors",
