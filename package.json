@@ -1,31 +1,33 @@
 {
-  "description": "Power BI yFiles integration",
+  "name": "power-bi-basic",
+  "description": "default_template_value",
+  "repository": {
+    "type": "default_template_value",
+    "url": "default_template_value"
+  },
   "license": "MIT",
-  "private": true,
-  "name": "graphs-in-power-bi",
   "scripts": {
     "pbiviz": "pbiviz",
     "start": "pbiviz start",
     "package": "pbiviz package",
-    "lint": "tslint -r \"node_modules/tslint-microsoft-contrib\"  \"+(src|test)/**/*.ts\"",
-    "prettier": "prettier --write *.json {style,src}/**/*.{less,ts,json}"
+    "lint": "tslint -c tslint.json -p tsconfig.json"
   },
   "dependencies": {
-    "@babel/runtime": "^7.5.5",
-    "@babel/runtime-corejs2": "^7.5.5",
     "@types/d3": "5.7.2",
-    "core-js": "3.2.1",
-    "d3": "5.10.0",
-    "lodash": "^4.17.15",
-    "powerbi-visuals-api": "~2.6.1",
-    "powerbi-visuals-utils-dataviewutils": "^2.2.1",
-    "yfiles": "./yFiles/lib/es-modules"
+    "d3": "5.12.0",
+    "powerbi-visuals-api": "~5.1.0",
+    "powerbi-visuals-utils-dataviewutils": "^6.0.0",
+    "powerbi-visuals-utils-formattingmodel": "5.0.0",
+    "yfiles": "./yFiles/yfiles-25.0.3.tgz"
   },
   "devDependencies": {
-    "ts-loader": "6.0.4",
-    "tslint": "5.20.0",
-    "tslint-microsoft-contrib": "6.2.0",
-    "typescript": "3.5.3",
-    "prettier": "1.18.2"
-  }
+    "ts-loader": "6.1.0",
+    "tslint": "^5.18.0",
+    "tslint-microsoft-contrib": "^6.2.0",
+    "typescript": "3.6.3"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "keywords": [],
+  "author": ""
 }

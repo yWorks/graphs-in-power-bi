@@ -53,40 +53,47 @@
     }
   ],
   "objects": {
-    "network": {
-      "displayName": "Network",
-      "displayNameKey": "Visual_Network",
+    "networkSettings": {
       "properties": {
         "layoutStyle": {
-          "displayName": "Layout",
-          "description": "The type of layout used to lay out the network. Note that the tree can only be applied to a tree structure. If the graph is not a tree the layout falls back to the hierarchical layout type.",
-          "displayNameKey": "Visual_Network_Layout",
           "type": {
             "enumeration": [
               {
-                "value": "Organic",
-                "displayNameKey": "Visual_Network_Organic",
-                "displayName": "Organic"
+                "displayNameKey": "Tree",
+                "displayName": "Tree",
+                "value": "Tree"
               },
               {
-                "value": "Hierarchic",
-                "displayNameKey": "Visual_Network_Hierarchic",
-                "displayName": "Hierarchic"
-              },
-              {
-                "value": "Tree",
-                "displayNameKey": "Visual_Network_Tree",
-                "displayName": "Tree"
+                "displayNameKey": "Organic",
+                "displayName": "Organic",
+                "value": "Organic"
               }
             ]
           }
         },
         "invertEdges": {
-          "description": "Whether the edges are inverted, i.e. the parent-child relationship is inverted.",
           "displayName": "Invert Edges",
-          "displayNameKey": "Visual_Edges_Invert",
+          "description":"Invert all edges",
+          "displayNameKey": "Visual_Edges_invert",
           "type": {
             "bool": true
+          }
+        },
+        "zoomSelectFactor": {
+          "type": {
+            "numeric":true
+          }
+        },
+        "highlightColor": {
+          "displayName": "Selection Zoom Color",
+          "description": "The color of the node when zooming into a selected item via an adjacent widget.",
+          "displayNameKey": "Visual_Network_Zoom_Color",
+          "type": {
+            "fill": {
+              "solid": {
+                "color": true
+              }
+            }
           }
         },
         "layoutDirection": {
@@ -117,35 +124,15 @@
               }
             ]
           }
-        },
-        "zoomSelectFactor": {
-          "displayName": "Selection Zoom Factor",
-          "description": "The zoom factor applied when another widget defines a focus. Typically a value between 1 and 2.",
-          "displayNameKey": "Visual_Network_Zoom_Factor",
-          "type": {
-            "numeric": true
-          }
-        },
-        "highlightColor": {
-          "displayName": "Selection Zoom Color",
-          "description": "The color of the node when zooming into a selected item via an adjacent widget.",
-          "displayNameKey": "Visual_Network_Zoom_Color",
-          "type": {
-            "fill": {
-              "solid": {
-                "color": true
-              }
-            }
-          }
         }
       }
     },
-    "neighborhood": {
+    "neighborhoodSettings": {
       "displayName": "Neighborhood",
       "description": "Augments the filtered view with parents and children.",
       "displayNameKey": "Visual_Neighborhood",
       "properties": {
-        "show": {
+        "showNeighborhood": {
           "description": "Whether the neighborhood of filtered nodes is shown.",
           "displayName": "Show",
           "displayNameKey": "Visual_ShowNeighbors",
@@ -171,7 +158,7 @@
         }
       }
     },
-    "edges": {
+    "edgeSettings": {
       "displayName": "Edges",
       "displayNameKey": "Visual_Edges",
       "properties": {
@@ -317,7 +304,7 @@
         }
       }
     },
-    "nodes": {
+    "nodeSettings": {
       "displayName": "Nodes",
       "displayNameKey": "Visual_Nodes",
       "properties": {
@@ -389,8 +376,8 @@
             }
           }
         },
-        "nodeReSize": {
-          "displayName": "Resize to Labels",
+        "nodeResize": {
+          "displayName": "Resize the Labels",
           "description": "Whether the nodes are resized in function of the labels.",
           "displayNameKey": "Visual_Node_Adapt",
           "type": {
@@ -489,5 +476,6 @@
         }
       }
     }
-  ]
+  ],
+  "privileges": []
 }

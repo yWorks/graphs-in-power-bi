@@ -1,6 +1,6 @@
 This folder should at least contain
 
-/lib/es-modules/*
-/ide-support/yfiles-typeinfo.js
+- the `yfiles-25.0.3.tgz` file
+- the `license.json` file
 
 from the yFiles package.
