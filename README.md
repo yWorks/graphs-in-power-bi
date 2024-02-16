@@ -14,11 +14,10 @@ This sample is one of the many ways you can integrate yFiles in your enterprise 
 The tutorial [Developing a Power BI visual](https://docs.microsoft.com/en-us/power-bi/developer/custom-visual-develop-tutorial) details the steps to create a custom visual and applies to this yFiles widget as well.
 The most import elements in this tutorial are:
 
-- installing the Power BI tools for NodeJs via `npm i -g powerbi-visuals-tools`
 - registration of a Power BI certificate for localhost via `pbiviz --install-cert`
 - start the custom Power BI development server with 
 
-    pbiviz start
+    `npm run start`
 
 In case the certificate is still giving problems with something like *"net::ERR_CERT_COMMON_NAME_INVALID"*, it's because Chrome browser blocks this address https://localhost:8080 because of non-valid certificate.
 Please open the following link in separate browser tab: https://localhost:8080/assets/status. Chrome will show the warning message, click `advanced > proceed` to unsafe version. After that Chrome will work with dev visual correctly.        
