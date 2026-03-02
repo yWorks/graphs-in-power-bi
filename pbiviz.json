@@ -4,12 +4,12 @@
     "displayName": "yDiagram",
     "guid": "PowerDiagram",
     "visualClassName": "Visual",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "description": "yFiles diagrams for Power BI",
     "supportUrl": "https://yworks.com",
     "gitHubUrl": "https://github.com/yWorks/graphs-in-power-bi"
   },
-  "apiVersion": "2.6.0",
+  "apiVersion": "5.1.0",
   "author": {
     "name": "yWorks",
     "email": "support@yworks.com"
@@ -17,7 +17,7 @@
   "assets": {
     "icon": "assets/icon.png"
   },
-  "externalJS": [],
+  "externalJS": null,
   "style": "style/visual.less",
   "capabilities": "capabilities.json",
   "dependencies": null,
