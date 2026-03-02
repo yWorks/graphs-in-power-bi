@@ -2,6 +2,10 @@
 
 ![](./docs/PowerDiagramDark.png) 
 
+> \[!NOTE]
+> This project was created for older versions of Power BI and yFiles for HTML. It's now archived and no longer maintained. 
+> Please [get in touch with us](https://www.yfiles.com/contact) if you are interested in using the latest version of yFiles in Power BI.
+
 This sample demonstrates how to get yFiles diagrams into a Power BI dashboard with dataset integration. Many features one expects from such an integration are implemented; filtering, selection synchronization, highlights, styling and more. Below you can find an overview of the features as well as how to compile the code. The [widget's manual](./docs/PowerDiagram.pdf) is also available.
 
 The compiled widget **works both in the desktop version and Power BI online (service)**. The same package can be uploaded an used and you can integrate it in any of your dashboards. The only requirement is a valid yFiles license. You can also download [a trial version](https://my.yworks.com/signup?product=YFILES_HTML_EVAL) and the same license can be used for the Power BI widget.
@@ -12,7 +16,7 @@ This sample is one of the many ways you can integrate yFiles in your enterprise 
 ## Installation
  
 The tutorial [Developing a Power BI visual](https://docs.microsoft.com/en-us/power-bi/developer/custom-visual-develop-tutorial) details the steps to create a custom visual and applies to this yFiles widget as well.
-The most import elements in this tutorial are:
+The most important elements in this tutorial are:
 
 - registration of a Power BI certificate for localhost via `pbiviz --install-cert`
 - start the custom Power BI development server with 
