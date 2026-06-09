@@ -1,10 +1,11 @@
+> [!IMPORTANT]
+> ### This repository has been archived and is no longer maintained.
+> It was created for older versions of Power BI and yFiles for HTML. Please [get in touch with us](https://www.yfiles.com/contact) if you are interested in using the latest version of yFiles in Power BI.
+
+
 # yFiles Diagrams in Power BI
 
 ![](./docs/PowerDiagramDark.png)
-
-> \[!NOTE]
-> This project was created for older versions of Power BI and yFiles for HTML. It's now archived and no longer maintained. 
-> Please [get in touch with us](https://www.yfiles.com/contact) if you are interested in using the latest version of yFiles in Power BI.
 
 This sample demonstrates how to get yFiles diagrams into a Power BI dashboard with dataset integration. Many features one expects from such an integration are implemented; filtering, selection synchronization, highlights, styling and more. Below you can find an overview of the features as well as how to compile the code. The [widget's manual](./docs/PowerDiagram.pdf) is also available.
 
